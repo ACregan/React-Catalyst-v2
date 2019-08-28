@@ -4,8 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild": "npm run flushdist",
     "build": "webpack --config webpack.config.prod.js",
-    "dev": "webpack --config webpack.config.dev.js"
+    "predev": "npm run flushdist",
+    "dev": "webpack --config webpack.config.dev.js",
+    "flushdist": "rimraf ./dist && mkdir -p ./dist/js && mkdir -p ./dist/css"
   },
   "keywords": [],
   "author": "",
