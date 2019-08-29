@@ -1,1 +1,3 @@
-import React from 'react'
+import '@babel/polyfill'
+import 'react'
+import 'react-dom'

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "npm run flushdist",
-    "build": "webpack --config webpack.config.prod.js",
-    "predev": "npm run flushdist",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "dev": "webpack --config webpack.config.dev.js",
     "flushdist": "rimraf ./dist && mkdir -p ./dist/js && mkdir -p ./dist/css"
   },
@@ -21,6 +20,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.5.5",
     "babel-loader": "^8.0.6",
+    "cross-env": "^5.2.0",
     "css-loader": "^3.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",

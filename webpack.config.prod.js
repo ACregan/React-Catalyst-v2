@@ -4,6 +4,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: 'production',
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss'],
+  },
   entry: {
     vendor: path.resolve(__dirname, 'src/vendor'),
     main: path.resolve(__dirname, 'src/index'),
@@ -12,7 +15,21 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
     //publicPath: '/',
-    filename: '[name].js',
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[name].[chunkhash].js',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: 'initial',
+          name: 'vendor',
+          enforce: true,
+        },
+      },
+    },
   },
   module: {
     rules: [
@@ -73,9 +90,6 @@ module.exports = {
       },
     ],
   },
-  resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
-  },
   plugins: [
     new HtmlWebPackPlugin({
       template: './src/index.html',
@@ -86,9 +100,4 @@ module.exports = {
       chunkFilename: '[id].[hash].css',
     }),
   ],
-
-  // TODO: to be pared off into a webpack.config.DEV.js file
-  //mode: 'development',
-  //watch: true,
-  //devtool: 'source-map',
 }
