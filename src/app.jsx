@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react'
+import React, { lazy, Suspense, useState } from 'react'
 
 //Global SCSS import (no classname transforms)
 import './global.scss'
@@ -9,9 +9,7 @@ const App = () => {
   const [myHook, setMyHook] = useState('InitialState')
   const [dimentionalPortal, setDimentionalPortal] = useState(false)
 
-  const AnotherDimention = React.lazy(() =>
-    import('./components/anotherDimention')
-  )
+  const AnotherDimention = lazy(() => import('./components/anotherDimention'))
 
   return (
     <>
