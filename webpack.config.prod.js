@@ -120,6 +120,19 @@ module.exports = {
           },
         ],
       },
+      //VIDEO FILES:
+      {
+        test: /\.mp4$/,
+        loader: 'url-loader?limit=10000&mimetype=video/mp4',
+      },
+      {
+        test: /\.webm$/,
+        loader: 'url-loader?limit=10000',
+      },
+      {
+        test: /\.ogg$/,
+        loader: 'url-loader?limit=10000',
+      },
     ],
   },
   plugins: [
