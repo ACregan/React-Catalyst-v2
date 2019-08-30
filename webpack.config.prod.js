@@ -50,7 +50,7 @@ module.exports = {
         ],
       },
 
-      // SCSS
+      // SCSS MODULES
       {
         test: /\.module\.s(a|c)ss$/,
         use: [
@@ -65,22 +65,26 @@ module.exports = {
             },
           },
           {
+            loader: 'postcss-loader',
+          },
+          {
             loader: 'sass-loader',
             options: {
               sourceMap: false,
             },
           },
-          {
-            loader: 'postcss-loader',
-          },
         ],
       },
+      // SCSS GLOBALS
       {
         test: /\.s(a|c)ss$/,
         exclude: /\.module.(s(a|c)ss)$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
+          {
+            loader: 'postcss-loader',
+          },
           {
             loader: 'sass-loader',
             options: {
