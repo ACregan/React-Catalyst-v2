@@ -123,6 +123,9 @@ module.exports = {
     ],
   },
   plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',
@@ -130,9 +133,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/[name].[hash].css',
       chunkFilename: 'css/[id].[hash].css',
-    }),
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
     }),
   ],
 }
