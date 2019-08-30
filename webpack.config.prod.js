@@ -14,9 +14,9 @@ module.exports = {
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
-    //publicPath: '/',
+    publicPath: 'dist/',
     filename: '[name].[chunkhash].js',
-    chunkFilename: '[name].[chunkhash].js',
+    chunkFilename: 'js/[name].[chunkhash].js',
   },
   optimization: {
     splitChunks: {
@@ -89,6 +89,19 @@ module.exports = {
             loader: 'sass-loader',
             options: {
               sourceMap: false,
+            },
+          },
+        ],
+      },
+      // FONTS
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
             },
           },
         ],
