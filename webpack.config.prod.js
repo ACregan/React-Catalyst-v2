@@ -37,9 +37,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: ['babel-loader', 'eslint-loader'],
       },
 
       // HTML (TODO: Ejs or Handlebars)
@@ -71,6 +69,9 @@ module.exports = {
             options: {
               sourceMap: false,
             },
+          },
+          {
+            loader: 'postcss-loader',
           },
         ],
       },

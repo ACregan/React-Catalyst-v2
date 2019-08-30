@@ -1,3 +1,9 @@
+$test-color: #f0f;
+
+::placeholder {
+  color: $test-color;
+}
+
 .red {
   color: red;
 }
