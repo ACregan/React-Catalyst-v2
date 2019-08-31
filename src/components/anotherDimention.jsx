@@ -5,6 +5,16 @@ import humanoidInMotion from '../static/videos/SampleVideo_360x240_1mb.mp4'
 
 import styles from './anotherDimention.module'
 
+const obj = {
+  foo: {
+    bar: {
+      baz: 'BAZZY BAZ BAZ!',
+    },
+  },
+}
+const baz = obj?.foo?.bar?.baz
+console.log(baz)
+
 const AnotherDimention = () => {
   return (
     <>
