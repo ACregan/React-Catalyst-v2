@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm run start-dev-server",
     "start-dev-server": "babel-node catalyst/dev-server.js",
     "prebuild": "npm run flushdist",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js",
-    "dev": "npm run start-dev-server",
     "flushdist": "rimraf ./dist && mkdir -p ./dist/public/js && mkdir -p ./dist/public/css && mkdir -p ./dist/public/fonts && mkdir -p ./dist/public/images&& mkdir -p ./dist/public/videos"
   },
   "keywords": [],

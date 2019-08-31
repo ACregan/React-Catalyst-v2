@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin
 
@@ -79,7 +80,7 @@ module.exports = {
       },
       // SCSS GLOBALS
       {
-        test: /\.s(a|c)ss$/,
+        test: /\.(sa|sc|c)ss$/,
         exclude: /\.module.(s(a|c)ss)$/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -146,6 +147,9 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html',
     }),
+    new CopyWebpackPlugin([
+      { from: 'src/public/images/favicon', to: 'public/images/favicon' },
+    ]),
     new MiniCssExtractPlugin({
       filename: 'public/css/[name].[hash].css',
       chunkFilename: 'public/css/[id].[hash].css',

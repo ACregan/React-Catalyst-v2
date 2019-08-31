@@ -1,5 +1,7 @@
 import React, { lazy, Suspense, useState } from 'react'
 
+import './public/css/normalize.css'
+
 //Global SCSS import (no classname transforms)
 import './global.scss'
 //SCSS Modules import

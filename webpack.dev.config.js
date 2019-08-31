@@ -66,7 +66,7 @@ module.exports = {
       },
       // SCSS GLOBALS
       {
-        test: /\.s(a|c)ss$/,
+        test: /\.(sa|sc|c)ss$/,
         exclude: /\.module.(s(a|c)ss)$/,
         use: [
           'style-loader',
@@ -126,7 +126,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebPackPlugin({ template: './src/index.html' }),
+    new HtmlWebPackPlugin({ template: './catalyst/dev-server-index.html' }),
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
