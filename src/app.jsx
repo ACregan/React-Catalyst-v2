@@ -22,19 +22,21 @@ const App = () => {
         {`CLICK ME: Hook State is ${myHook}`}
       </p>
 
-      <p
-        onClick={() => {
-          setDimentionalPortal(true)
-        }}
-      >
+      <div>
         {dimentionalPortal ? (
           <Suspense fallback={<div>Loading...</div>}>
             <AnotherDimention />
           </Suspense>
         ) : (
-          `I will take you to another dimention, CLICK ME!`
+          <p
+            onClick={() => {
+              setDimentionalPortal(true)
+            }}
+          >
+            {`I will take you to another dimention, CLICK ME!`}
+          </p>
         )}
-      </p>
+      </div>
     </>
   )
 }

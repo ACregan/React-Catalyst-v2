@@ -2,6 +2,7 @@ module.exports = {
   parser: 'babel-eslint',
   plugins: [
     // ...
+    'react',
     'react-hooks',
   ],
   rules: {

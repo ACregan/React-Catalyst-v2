@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "npm run flushdist",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
-    "dev": "webpack --config webpack.config.dev.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.dev.js",
     "flushdist": "rimraf ./dist && mkdir -p ./dist/public/js && mkdir -p ./dist/public/css && mkdir -p ./dist/public/fonts && mkdir -p ./dist/public/images&& mkdir -p ./dist/public/videos"
   },
   "keywords": [],
@@ -27,6 +27,7 @@
     "cssnano": "^4.1.10",
     "eslint": "^6.2.2",
     "eslint-loader": "^3.0.0",
+    "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^2.0.1",
     "file-loader": "^4.2.0",
     "html-loader": "^0.5.5",
@@ -36,6 +37,7 @@
     "path": "^0.12.7",
     "postcss-loader": "^3.0.0",
     "prop-types": "^15.7.2",
+    "react-hot-loader": "^4.12.12",
     "sass-loader": "^7.3.1",
     "style-loader": "^1.0.0",
     "url-loader": "^2.1.0",

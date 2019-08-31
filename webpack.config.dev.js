@@ -1,17 +1,20 @@
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin
 
 module.exports = {
   mode: 'development',
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss'],
+  },
   entry: {
     vendor: path.resolve(__dirname, 'src/vendor'),
     main: path.resolve(__dirname, 'src/index'),
   },
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
-    //publicPath: '/',
     filename: '[name].js',
   },
   module: {
@@ -20,9 +23,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-        },
+        use: ['babel-loader', 'eslint-loader'],
       },
 
       // HTML (TODO: Ejs or Handlebars)
@@ -35,7 +36,7 @@ module.exports = {
         ],
       },
 
-      // SCSS
+      // SCSS MODULES
       {
         test: /\.module\.s(a|c)ss$/,
         use: [
@@ -50,19 +51,8 @@ module.exports = {
             },
           },
           {
-            loader: 'sass-loader',
-            options: {
-              sourceMap: true,
-            },
+            loader: 'postcss-loader',
           },
-        ],
-      },
-      {
-        test: /\.s(a|c)ss$/,
-        exclude: /\.module.(s(a|c)ss)$/,
-        use: [
-          'style-loader',
-          'css-loader',
           {
             loader: 'sass-loader',
             options: {
@@ -71,22 +61,77 @@ module.exports = {
           },
         ],
       },
+      // SCSS GLOBALS
+      {
+        test: /\.s(a|c)ss$/,
+        exclude: /\.module.(s(a|c)ss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+
+      // FONTS
+      {
+        test: /\.(woff(2)?|ttf|eot|svg)?$/,
+        include: path.resolve(__dirname + '/src/static/fonts'),
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'public/fonts/',
+            },
+          },
+        ],
+      },
+
+      // IMAGES
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        exclude: path.resolve(__dirname + '/src/static/fonts'),
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'public/images/',
+            },
+          },
+        ],
+      },
+
+      // VIDEO FILES:
+      {
+        test: /\.mp4$/,
+        loader:
+          'file-loader?name=public/videos/[name].[ext]&mimetype=video/mp4',
+      },
+      {
+        test: /\.(webm|ogg)$/,
+        loader: 'file-loader?name=public/videos/[name].[ext]',
+      },
     ],
   },
-  resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
-  },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: './src/index.html',
-      filename: './index.html',
-    }),
+    new HtmlWebPackPlugin({ template: './src/index.html' }),
     new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
-      chunkFilename: '[id].[hash].css',
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ],
-
-  watch: true,
-  devtool: 'source-map',
+  devServer: {
+    compress: true,
+    hot: true,
+  },
+  devtool: 'cheap-module-eval-source-map',
 }

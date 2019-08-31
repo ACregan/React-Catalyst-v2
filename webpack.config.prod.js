@@ -15,7 +15,7 @@ module.exports = {
   },
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
+    path: path.resolve(__dirname, 'dist'),
     publicPath: '/projects/catalyst2/',
     filename: 'public/js/[name].js',
     chunkFilename: 'public/js/[name].[chunkhash].js',
