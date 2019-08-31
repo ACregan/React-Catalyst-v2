@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
@@ -9,13 +10,12 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
   },
-  entry: {
-    vendor: path.resolve(__dirname, 'src/vendor'),
-    main: path.resolve(__dirname, 'src/index'),
-  },
+  entry: ['webpack-hot-middleware/client?reload=true', './src/index.js'],
   target: 'web',
   output: {
-    filename: '[name].js',
+    path: path.resolve(__dirname + '/dist'),
+    publicPath: '/',
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -124,16 +124,22 @@ module.exports = {
   },
   plugins: [
     new HtmlWebPackPlugin({ template: './src/index.html' }),
+    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
+    new webpack.NoEmitOnErrorsPlugin(),
   ],
   devServer: {
-    compress: true,
+    contentBase: path.resolve(__dirname, 'src'),
     hot: true,
-    port: 3000,
-    disableHostCheck: true,
+    // inline: true,
+    // compress: true,
+    // //host: '0.0.0.0',
+    // port: 3000,
+    // public: 'localhost:3000',
+    // allowedHosts: ['zenbook'],
   },
   devtool: 'cheap-module-eval-source-map',
 }
