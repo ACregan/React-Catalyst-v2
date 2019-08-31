@@ -16,6 +16,10 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'src'),
+    hot: true,
+  },
   module: {
     rules: [
       // JS / JSX
@@ -82,7 +86,7 @@ module.exports = {
       // FONTS
       {
         test: /\.(woff(2)?|ttf|eot|svg)?$/,
-        include: path.resolve(__dirname + '/src/static/fonts'),
+        include: path.resolve(__dirname + '/src/public/fonts'),
         use: [
           {
             loader: 'file-loader',
@@ -97,7 +101,7 @@ module.exports = {
       // IMAGES
       {
         test: /\.(png|svg|jpg|gif)$/,
-        exclude: path.resolve(__dirname + '/src/static/fonts'),
+        exclude: path.resolve(__dirname + '/src/public/fonts'),
         use: [
           {
             loader: 'file-loader',
@@ -122,14 +126,14 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebPackPlugin({ template: './catalyst/dev-server-index.html' }),
+    new HtmlWebPackPlugin({ template: './src/index.html' }),
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
     new CopyWebpackPlugin([
-      { from: 'src/static/images/favicon', to: 'images/favicon' },
+      { from: 'src/public/images/favicon', to: 'images/favicon' },
     ]),
     new webpack.NoEmitOnErrorsPlugin(),
   ],

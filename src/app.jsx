@@ -6,8 +6,8 @@ import './global.scss'
 import styles from './app.module'
 
 const App = () => {
-  const [myHook, setMyHook] = useState('InitialState')
   const [dimentionalPortal, setDimentionalPortal] = useState(false)
+  const [myHook, setMyHook] = useState('InitialState')
 
   const AnotherDimention = lazy(() => import('./components/anotherDimention'))
 

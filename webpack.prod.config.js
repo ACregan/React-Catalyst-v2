@@ -99,7 +99,7 @@ module.exports = {
       // FONTS
       {
         test: /\.(woff(2)?|ttf|eot|svg)?$/,
-        include: path.resolve(__dirname + '/src/static/fonts'),
+        include: path.resolve(__dirname + '/src/public/fonts'),
         use: [
           {
             loader: 'file-loader',
@@ -114,7 +114,7 @@ module.exports = {
       // IMAGES
       {
         test: /\.(png|svg|jpg|gif)$/,
-        exclude: path.resolve(__dirname + '/src/static/fonts'),
+        exclude: path.resolve(__dirname + '/src/public/fonts'),
         use: [
           {
             loader: 'file-loader',
@@ -139,10 +139,9 @@ module.exports = {
     ],
   },
   plugins: [
-    // TEMP
-    // new BundleAnalyzerPlugin({
-    //   analyzerMode: 'static',
-    // }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',
