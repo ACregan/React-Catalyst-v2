@@ -132,6 +132,8 @@ module.exports = {
   devServer: {
     compress: true,
     hot: true,
+    port: 3000,
+    disableHostCheck: true,
   },
   devtool: 'cheap-module-eval-source-map',
 }
