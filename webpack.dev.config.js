@@ -2,8 +2,7 @@ const webpack = require('webpack')
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -123,23 +122,16 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebPackPlugin({ template: './src/index.html' }),
+    new HtmlWebPackPlugin({ template: './catalyst/dev-server-index.html' }),
     new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
+    new CopyWebpackPlugin([
+      { from: 'src/static/images/favicon', to: 'images/favicon' },
+    ]),
     new webpack.NoEmitOnErrorsPlugin(),
   ],
-  devServer: {
-    contentBase: path.resolve(__dirname, 'src'),
-    hot: true,
-    // inline: true,
-    // compress: true,
-    // //host: '0.0.0.0',
-    // port: 3000,
-    // public: 'localhost:3000',
-    // allowedHosts: ['zenbook'],
-  },
   devtool: 'cheap-module-eval-source-map',
 }
