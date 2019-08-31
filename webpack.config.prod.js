@@ -16,9 +16,9 @@ module.exports = {
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'), // Note: Physical files are only output by the production build task `npm run build`.
-    //publicPath: '/',
-    filename: '[name].js',
-    chunkFilename: 'js/[name].[chunkhash].js',
+    publicPath: '/projects/catalyst2/',
+    filename: 'public/js/[name].js',
+    chunkFilename: 'public/js/[name].[chunkhash].js',
   },
   optimization: {
     splitChunks: {
@@ -95,19 +95,23 @@ module.exports = {
           },
         ],
       },
+
       // FONTS
       {
-        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(woff(2)?|ttf|eot|svg)?$/,
+        include: path.resolve(__dirname + '/src/static/fonts'),
         use: [
           {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'fonts/',
+              outputPath: 'public/fonts/',
             },
           },
         ],
       },
+
+      // IMAGES
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
@@ -115,37 +119,36 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'images/',
+              outputPath: 'public/images/',
             },
           },
         ],
       },
-      //VIDEO FILES:
+
+      // VIDEO FILES:
       {
         test: /\.mp4$/,
-        loader: 'url-loader?limit=10000&mimetype=video/mp4',
+        loader:
+          'file-loader?name=public/videos/[name].[ext]&mimetype=video/mp4',
       },
       {
-        test: /\.webm$/,
-        loader: 'url-loader?limit=10000',
-      },
-      {
-        test: /\.ogg$/,
-        loader: 'url-loader?limit=10000',
+        test: /\.(webm|ogg)$/,
+        loader: 'file-loader?name=public/videos/[name].[ext]',
       },
     ],
   },
   plugins: [
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-    }),
+    // TEMP
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'static',
+    // }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/[name].[hash].css',
-      chunkFilename: 'css/[id].[hash].css',
+      filename: 'public/css/[name].[hash].css',
+      chunkFilename: 'public/css/[id].[hash].css',
     }),
   ],
 }

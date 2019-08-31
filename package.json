@@ -7,7 +7,7 @@
     "prebuild": "npm run flushdist",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "dev": "webpack --config webpack.config.dev.js",
-    "flushdist": "rimraf ./dist && mkdir -p ./dist/js && mkdir -p ./dist/css && mkdir -p ./dist/fonts && mkdir -p ./dist/images"
+    "flushdist": "rimraf ./dist && mkdir -p ./dist/public/js && mkdir -p ./dist/public/css && mkdir -p ./dist/public/fonts && mkdir -p ./dist/public/images&& mkdir -p ./dist/public/videos"
   },
   "keywords": [],
   "author": "",
