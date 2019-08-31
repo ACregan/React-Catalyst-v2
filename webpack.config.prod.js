@@ -114,6 +114,7 @@ module.exports = {
       // IMAGES
       {
         test: /\.(png|svg|jpg|gif)$/,
+        exclude: path.resolve(__dirname + '/src/static/fonts'),
         use: [
           {
             loader: 'file-loader',
