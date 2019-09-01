@@ -1,10 +1,48 @@
-// // SCSS / Vars test
-// $test-color: #f0f;
-// // Autoprefixer test
-// ::placeholder {
-//   color: $test-color;
-// }
+@import '_variables.scss';
 
-.red {
-  color: red;
+.container{
+  width:100vw;
+  height:100vh;
+  box-sizing: border-box;
+  overflow:hidden;
+  position: relative;
+  display: grid;
+  grid:
+    ' header '
+    ' main '
+    ' footer '
+    ;
+  grid-template-columns: 100% ;
+  grid-template-rows: 90px 1fr 60px;
+  grid-gap: 10px;
+  padding:10px;
 }
+  .sidebarNav{
+    position: absolute;
+    top:0;
+    bottom:0;
+    z-index: 10000;
+    grid-area: sidebarNav;
+    background: #333;
+    left:0;
+    //Temp
+    width:0;
+    overflow:hidden;
+  }
+  .header{
+    position: relative;
+    grid-area: header;
+    background: #666;
+    padding:0 16px;
+  }
+  .application{
+    position: relative;
+    grid-area: main;
+    background: #999;
+    padding:0 16px;
+  }
+  .footer{
+    position: relative;
+    grid-area: footer;
+    background: #BBB;
+  }

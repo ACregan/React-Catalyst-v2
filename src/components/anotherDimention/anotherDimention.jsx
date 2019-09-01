@@ -1,7 +1,7 @@
 import React from 'react'
 
-import humanoid from '../public/images/Anon.jpg'
-import humanoidInMotion from '../public/videos/SampleVideo_360x240_1mb.mp4'
+import humanoid from '../../public/images/Anon.jpg'
+import humanoidInMotion from '../../public/videos/SampleVideo_360x240_1mb.mp4'
 
 import styles from './anotherDimention.module'
 

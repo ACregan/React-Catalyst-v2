@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'Karla-Bold';
+  src: url('../fonts/karla/Karla-Bold.woff2') format('woff2'),
+      url('../fonts/karla/Karla-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Karla-Regular';
+  src: url('../fonts/karla/Karla-Regular.woff2') format('woff2'),
+      url('../fonts/karla/Karla-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Karla-Italic';
+  src: url('../fonts/karla/Karla-Italic.woff2') format('woff2'),
+      url('../fonts/karla/Karla-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Karla-BoldItalic';
+  src: url('../fonts/karla/Karla-BoldItalic.woff2') format('woff2'),
+      url('../fonts/karla/Karla-BoldItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.bold,
+strong{
+  font-family: 'Karla-Bold';
+}
+
+.italic,
+i{
+  font-family: 'Karla-Italic';
+}
+
+.boldItalic,
+i > strong,
+strong > i{
+  font-family: 'Karla-BoldItalic';
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  font-weight: 400;
+  font-family: 'Karla-Regular';
+
+  > strong{
+    font-weight: 800;
+    font-family: 'Karla-Bold';
+  }
+
+  > i{
+    font-weight: 400;
+    font-family: 'Karla-Italic';
+  }
+
+  > i > strong,
+  > strong > i{
+    font-weight: 800;
+    font-family: 'Karla-BoldItalic';
+
+  }
+}
