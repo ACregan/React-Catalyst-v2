@@ -27,11 +27,11 @@ app.use(
   })
 )
 
-app.get('*', function(req, res) {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/dev-server-index.html'))
 })
 
-app.listen(port, function(err) {
+app.listen(port, err => {
   if (err) {
     console.log(err)
   } else {

@@ -8,7 +8,7 @@ import App from './app.jsx'
 import { BrowserRouter } from 'react-router-dom'
 
 const basenameVar =
-  process.env.NODE_ENV == 'development' ? '/' : '/projects/catalyst2'
+  process.env.NODE_ENV == 'development' ? '/' : '/projects/catalyst2/'
 
 render(
   <BrowserRouter basename={basenameVar}>

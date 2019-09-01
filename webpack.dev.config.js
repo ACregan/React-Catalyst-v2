@@ -8,6 +8,7 @@ module.exports = {
   mode: 'development',
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
+    alias: { 'react-dom': '@hot-loader/react-dom' },
   },
   entry: ['webpack-hot-middleware/client?reload=true', './src/index.js'],
   target: 'web',
@@ -129,6 +130,7 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({ template: './catalyst/dev-server-index.html' }),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
@@ -136,7 +138,6 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: 'src/public/images/favicon', to: 'images/favicon' },
     ]),
-    new webpack.NoEmitOnErrorsPlugin(),
   ],
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'inline-source-map',
 }
