@@ -141,6 +141,8 @@ module.exports = {
   },
   plugins: [
     new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+      reportFilename: '../catalyst/ProductionBundleReport.html',
       analyzerMode: 'static',
     }),
     new HtmlWebPackPlugin({
