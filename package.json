@@ -1,15 +1,18 @@
 {
   "name": "catalyst2",
-  "version": "1.0.0",
+  "version": "1.9.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "npm run start-dev-server",
     "start-dev-server": "cross-env NODE_ENV=development babel-node catalyst/dev-server.js",
-    "prebuild": "run-s dist-flush dist-construct",
+    "prebuild": "run-s dist-flush dist-construct bump:patch",
     "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js",
     "dist-flush": "rimraf ./dist",
-    "dist-construct": "mkdir -p ./dist/public/js && mkdir -p ./dist/public/css && mkdir -p ./dist/public/fonts && mkdir -p ./dist/public/images&& mkdir -p ./dist/public/videos"
+    "dist-construct": "mkdir -p ./dist/public/js && mkdir -p ./dist/public/css && mkdir -p ./dist/public/fonts && mkdir -p ./dist/public/images&& mkdir -p ./dist/public/videos",
+    "bump:major": "npm --no-git-tag-version -f version major",
+    "bump:minor": "npm --no-git-tag-version -f version minor",
+    "bump:patch": "npm --no-git-tag-version -f version patch"
   },
   "keywords": [],
   "author": "",
