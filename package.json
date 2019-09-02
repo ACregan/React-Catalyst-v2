@@ -7,7 +7,7 @@
     "start": "npm run start-dev-server",
     "start-dev-server": "cross-env NODE_ENV=development babel-node catalyst/dev-server.js",
     "prebuild": "run-s dist-flush dist-construct bump:patch",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "dist-flush": "rimraf ./dist",
     "dist-construct": "mkdir -p ./dist/public/js && mkdir -p ./dist/public/css && mkdir -p ./dist/public/fonts && mkdir -p ./dist/public/images&& mkdir -p ./dist/public/videos",
     "bump:major": "npm --no-git-tag-version -f version major",

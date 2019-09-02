@@ -1,4 +1,5 @@
 // WEB BUILD Entry point
+// Used for both 'dev' mode and 'production' mode builds
 import '@babel/polyfill'
 import React from 'react'
 import { render } from 'react-dom'

@@ -1,7 +1,7 @@
 import express from 'express'
 import webpack from 'webpack'
 import path from 'path'
-import config from '../webpack.dev.config.js'
+import config from '../webpack.config.dev.js'
 import open from 'open'
 
 /* eslint-disable no-console */
