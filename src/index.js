@@ -3,13 +3,12 @@
 import '@babel/polyfill'
 import React from 'react'
 import { render } from 'react-dom'
-import App from './app.jsx'
+import App from 'app.jsx'
 
 // REACT ROUTER DOM
 import { BrowserRouter } from 'react-router-dom'
 
-const basenameVar =
-  process.env.NODE_ENV == 'production' ? '/projects/catalyst2/' : '/'
+const basenameVar = process.env.NODE_ENV == 'production' ? '/projects/catalyst2/' : '/'
 
 render(
   <BrowserRouter basename={basenameVar}>

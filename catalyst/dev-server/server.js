@@ -1,10 +1,9 @@
+/* eslint-disable no-console */
 import express from 'express'
 import webpack from 'webpack'
 import path from 'path'
 import config from '../../webpack.config.dev.js'
 import open from 'open'
-
-/* eslint-disable no-console */
 
 // DEV-SERVER.JS
 // This enables dev server on localhost over network
