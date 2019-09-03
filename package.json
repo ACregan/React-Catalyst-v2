@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run start-dev-server bump:patch",
-    "start-dev-server": "cross-env NODE_ENV=development babel-node catalyst/dev-server.js",
+    "start-dev-server": "cross-env NODE_ENV=development babel-node catalyst/dev-server/dev-server.js",
     "prebuild": "run-s dist-flush",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "dist-flush": "rimraf ./dist",

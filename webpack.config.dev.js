@@ -128,7 +128,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebPackPlugin({ template: './catalyst/dev-server-index.html' }),
+    new HtmlWebPackPlugin({ template: './catalyst/dev-server/index.html' }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
