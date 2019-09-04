@@ -6,7 +6,6 @@ import JunkContent from './components/junk/junk'
 
 import './public/css/normalize.css'
 import './public/css/typography.scss'
-
 import './global.scss'
 
 import styles from './app.module'
