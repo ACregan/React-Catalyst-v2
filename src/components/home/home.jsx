@@ -1,4 +1,5 @@
 import React from 'react'
+import CounterExample from './counterExample/counterExample'
 
 const Home = () => (
   <>
@@ -6,6 +7,7 @@ const Home = () => (
     <p className="bold">I am bold copy</p>
     <p className="italic">I am italics copy</p>
     <p className="boldItalic">I am bold italics copy</p>
+    <CounterExample />
   </>
 )
 
