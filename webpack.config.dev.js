@@ -128,7 +128,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebPackPlugin({ template: './catalyst/dev-server/index.html' }),
+    new HtmlWebPackPlugin({ 
+      template: './catalyst/dev-server/index.html',
+      inject: false // this prevents 2 script tags, its manually typed in the html template in dev.
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
