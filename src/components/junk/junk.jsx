@@ -1,15 +1,22 @@
-import React, { lazy, Suspense, useState } from 'react'
+import React, { useState } from 'react'
+import Loadable from 'react-loadable'
 
 //SCSS Modules import
-import styles from './junk.module'
+import styles from './junk.module.scss'
 
 const Junk = () => {
   const [dimentionalPortal, setDimentionalPortal] = useState(false)
   const [myHook, setMyHook] = useState('InitialState')
 
-  const AnotherDimention = lazy(() =>
-    import('../anotherDimention/anotherDimention')
-  )
+  // const AnotherDimention = lazy(() =>
+  //   import('../anotherDimention/anotherDimention')
+  // )
+  const AnotherDimentionAsync = Loadable({
+    loader: () => import('../anotherDimention/anotherDimention'),
+    loading() {
+      return <h1>LOADABLE MOTHERFUCKER - Home</h1>
+    },
+  })
 
   return (
     <>
@@ -24,9 +31,7 @@ const Junk = () => {
 
       <div>
         {dimentionalPortal ? (
-          <Suspense fallback={<div>Loading...</div>}>
-            <AnotherDimention />
-          </Suspense>
+          <AnotherDimentionAsync />
         ) : (
           <p
             onClick={() => {

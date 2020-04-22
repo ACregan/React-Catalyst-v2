@@ -1,14 +1,28 @@
 import React, { lazy, Suspense, useState } from 'react'
 import { NavLink, Switch, Route } from 'react-router-dom'
+import Loadable from 'react-loadable'
 
-import HomeContent from './components/home/home'
-import JunkContent from './components/junk/junk'
+//import HomeContent from './components/home/home'
+//import JunkContent from './components/junk/junk'
 
 import './public/css/normalize.css'
 import './public/css/typography.scss'
 import './global.scss'
 
-import styles from './app.module'
+import styles from './app.module.scss'
+
+const HomeContentAsync = Loadable({
+  loader: () => import('./components/home/home'),
+  loading() {
+    return <h1>LOADABLE MOTHERFUCKER - Home</h1>
+  },
+})
+const JunkContentAsync = Loadable({
+  loader: () => import('./components/junk/junk'),
+  loading() {
+    return <h1>LOADABLE MOTHERFUCKER - Junk</h1>
+  },
+})
 
 const App = () => (
   <article className={styles.container}>
@@ -22,8 +36,8 @@ const App = () => (
     </header>
     <main className={styles.application}>
       <Switch>
-        <Route exact path="/" component={HomeContent} />
-        <Route path="/junk" component={JunkContent} />
+        <Route exact path="/" component={HomeContentAsync} />
+        <Route path="/junk" component={JunkContentAsync} />
       </Switch>
     </main>
     <footer className={styles.footer}>

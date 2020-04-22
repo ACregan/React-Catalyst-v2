@@ -1,45 +1,48 @@
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const ReactLoadableSSRAddon = require('react-loadable-ssr-addon')
 
 module.exports = {
   mode: 'production',
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
   },
-  entry: {
-    vendor: path.resolve(__dirname, 'src/vendor'),
-    main: path.resolve(__dirname, 'src/index'),
-  },
   target: 'web',
+  entry: {
+    index: path.resolve(__dirname, 'src/ssr-client.js'),
+  },
+  devtool: 'cheap-module-eval-source-map',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/projects/catalyst2/',
+    publicPath: '/dist/',
+    path: path.join(__dirname, 'src', 'dist'),
     filename: 'public/js/[name].js',
     chunkFilename: 'public/js/[name].[chunkhash].js',
   },
-  optimization: {
-    splitChunks: {
-      chunks: 'all',
-      cacheGroups: {
-        vendor: {
-          test: /node_modules/,
-          chunks: 'initial',
-          name: 'vendor',
-          enforce: true,
-        },
-      },
-    },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   module: {
     rules: [
-      // JS / JSX
       {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        test: /\.jsx?$/,
+        exclude: /(node_modules|bower_components|public\/)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: [
+              require('@babel/plugin-proposal-class-properties'),
+              require('@babel/plugin-proposal-object-rest-spread'),
+              require('@babel/plugin-syntax-dynamic-import'),
+              require('react-loadable/babel'),
+            ],
+          },
+        },
       },
 
       // HTML (TODO: Ejs or Handlebars)
@@ -80,7 +83,6 @@ module.exports = {
       // SCSS GLOBALS
       {
         test: /\.(sa|sc|c)ss$/,
-        exclude: /\.module.(s(a|c)ss)$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
@@ -137,6 +139,23 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    nodeEnv: 'development',
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+          minChunks: 2,
+        },
+        default: {
+          minChunks: 2,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+  },
   plugins: [
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
@@ -151,6 +170,9 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'public/css/[name].[hash].css',
       chunkFilename: 'public/css/[id].[hash].css',
+    }),
+    new ReactLoadableSSRAddon({
+      filename: 'react-loadable-ssr-addon.json',
     }),
   ],
 }
