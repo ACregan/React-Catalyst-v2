@@ -13,7 +13,7 @@ module.exports = {
   entry: ['webpack-hot-middleware/client?reload=true', './src/index.js'],
   target: 'web',
   output: {
-    path: path.resolve(__dirname + '/dist'),
+    path: path.resolve(__dirname + 'dist'),
     publicPath: '/',
     filename: 'bundle.js',
   },
@@ -118,8 +118,7 @@ module.exports = {
       // VIDEO FILES:
       {
         test: /\.mp4$/,
-        loader:
-          'file-loader?name=public/videos/[name].[ext]&mimetype=video/mp4',
+        loader: 'file-loader?name=public/videos/[name].[ext]&mimetype=video/mp4',
       },
       {
         test: /\.(webm|ogg)$/,
@@ -128,9 +127,9 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebPackPlugin({ 
+    new HtmlWebPackPlugin({
       template: './catalyst/dev-server/index.html',
-      inject: false // this prevents 2 script tags, its manually typed in the html template in dev.
+      inject: false, // this prevents 2 script tags, its manually typed in the html template in dev.
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
@@ -138,9 +137,7 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    new CopyWebpackPlugin([
-      { from: 'src/public/images/favicon', to: 'images/favicon' },
-    ]),
+    new CopyWebpackPlugin([{ from: 'src/public/images/favicon', to: 'images/favicon' }]),
   ],
   devtool: 'inline-source-map',
 }

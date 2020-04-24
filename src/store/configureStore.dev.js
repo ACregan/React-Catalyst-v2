@@ -9,7 +9,7 @@ export default function configureStore(initialState) {
     initialState,
     compose(
       applyMiddleware(thunk, reduxImmutableStateInvariant()),
-      window.devToolsExtension ? window.devToolsExtension() : f => f
+      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.devToolsExtension() : f => f
     )
   );
 
