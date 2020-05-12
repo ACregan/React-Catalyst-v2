@@ -1,3 +1,4 @@
+import { hot } from 'react-hot-loader/root'
 import React, { lazy, Suspense, useState } from 'react'
 import { NavLink, Switch, Route } from 'react-router-dom'
 
@@ -33,4 +34,4 @@ const App = () => (
   </article>
 )
 
-export default App
+export default hot(App)
