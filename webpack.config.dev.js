@@ -137,7 +137,9 @@ module.exports = {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
-    new CopyWebpackPlugin([{ from: 'src/public/images/favicon', to: 'images/favicon' }]),
+    new CopyWebpackPlugin({
+      patterns: [{ from: 'src/public/images/favicon', to: 'images/favicon' }]
+    }),
   ],
   devtool: 'inline-source-map',
 }
