@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should take a snapshot 1`] = `
+<DocumentFragment>
+  <p>
+    I am regular copy
+  </p>
+  <p
+    class="bold"
+  >
+    I am bold copy
+  </p>
+  <p
+    class="italic"
+  >
+    I am italics copy
+  </p>
+  <p
+    class="boldItalic"
+  >
+    I am bold italics copy
+  </p>
+  <div>
+    <label>
+      Redux Functional Component and Hooks Counter Example
+    </label>
+    <div>
+      Counter = 0
+    </div>
+    <button>
+      + 1
+    </button>
+    <button>
+      - 1
+    </button>
+  </div>
+</DocumentFragment>
+`;
