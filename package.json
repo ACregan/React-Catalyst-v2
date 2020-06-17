@@ -15,7 +15,8 @@
     "bump:major": "npm --no-git-tag-version -f version major",
     "bump:minor": "npm --no-git-tag-version -f version minor",
     "bump:patch": "npm --no-git-tag-version -f version patch",
-    "test": "jest -c jest.config.js --watch --no-cache"
+    "test": "jest -c jest.config.js --watch --no-cache",
+    "test:coverage": "jest -c jest.config.js --coverage"
   },
   "keywords": [],
   "author": "",
