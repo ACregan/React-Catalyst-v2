@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const packageJSON = require('./package.json')
 
 module.exports = {
   mode: 'production',
@@ -23,13 +24,26 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: 'all',
+      maxInitialRequests: Infinity,
+      minSize: 0,
       cacheGroups: {
         vendor: {
-          test: /node_modules/,
-          chunks: 'initial',
-          name: 'vendor',
-          enforce: true,
+          test: /[\\/]node_modules[\\/]/,
+          name(module) {
+            // get the name. E.g. node_modules/packageName/not/this/part.js
+            // or node_modules/packageName
+            const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
+
+            // npm package names are URL-safe, but some servers don't like @ symbols
+            return `npm.${packageName.replace('@', '')}`
+          },
         },
+        // vendor: {
+        //   test: /node_modules/,
+        //   chunks: 'initial',
+        //   name: 'vendor',
+        //   enforce: true,
+        // },
       },
     },
   },
@@ -140,7 +154,7 @@ module.exports = {
   plugins: [
     new BundleAnalyzerPlugin({
       openAnalyzer: false,
-      reportFilename: '../catalyst/ProductionBundleReport.html',
+      reportFilename: `../catalyst/bundleReports/ProductionBundleReport_${packageJSON.version}.html`,
       analyzerMode: 'static',
     }),
     new HtmlWebPackPlugin({
@@ -148,7 +162,10 @@ module.exports = {
       filename: './index.html',
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: 'src/public/images/favicon', to: 'public/images/favicon' }],
+      patterns: [
+        { from: 'src/public/images/favicon', to: 'public/images/favicon' },
+        { from: 'src/.htaccess', to: './' },
+      ],
     }),
     new MiniCssExtractPlugin({
       filename: 'public/css/[name].[hash].css',
