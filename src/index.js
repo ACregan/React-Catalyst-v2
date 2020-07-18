@@ -13,10 +13,12 @@ import configureStore from './store/configureStore'
 const store = configureStore()
 
 const basenameVar = process.env.NODE_ENV == 'production' ? '/projects/catalyst2/' : '/'
-
+{
+  /* <BrowserRouter basename={basenameVar} history={customHistory}> */
+}
 render(
   <Provider store={store}>
-    <BrowserRouter basename={basenameVar}>
+    <BrowserRouter>
       <App />
     </BrowserRouter>
   </Provider>,

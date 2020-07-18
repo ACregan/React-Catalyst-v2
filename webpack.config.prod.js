@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const ManifestPlugin = require('webpack-manifest-plugin')
 const packageJSON = require('./package.json')
 
 module.exports = {
@@ -171,5 +172,6 @@ module.exports = {
       filename: 'public/css/[name].[hash].css',
       chunkFilename: 'public/css/[id].[hash].css',
     }),
+    new ManifestPlugin(),
   ],
 }
