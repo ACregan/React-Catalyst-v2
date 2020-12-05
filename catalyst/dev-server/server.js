@@ -14,9 +14,9 @@ const compiler = webpack(config)
 
 app.use(
   require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
+    // noInfo: true,
     publicPath: config.output.publicPath,
-    stats: { colors: true },
+    // stats: { colors: true },
   })
 )
 
@@ -30,7 +30,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '/index.html'))
 })
 
-app.listen(port, err => {
+app.listen(port, (err) => {
   if (err) {
     console.log(err)
   } else {
