@@ -144,12 +144,27 @@ module.exports = {
       // VIDEO FILES:
       {
         test: /\.mp4$/,
-        loader: 'file-loader?name=public/videos/[name].[ext]&mimetype=video/mp4',
+        loader: 'file-loader',
+        options: {
+          name: 'public/videos/[name].[ext]&mimetype=video/mp4',
+        },
       },
+      // {
+      //   test: /\.mp4$/,
+      //   loader: 'file-loader?name=public/videos/[name].[ext]&mimetype=video/mp4',
+      // },
+
       {
         test: /\.(webm|ogg)$/,
-        loader: 'file-loader?name=public/videos/[name].[ext]',
+        loader: 'file-loader',
+        options: {
+          name: 'public/videos/[name].[ext]',
+        },
       },
+      // {
+      //   test: /\.(webm|ogg)$/,
+      //   loader: 'file-loader?name=public/videos/[name].[ext]',
+      // },
     ],
   },
   plugins: [
@@ -173,5 +188,8 @@ module.exports = {
       chunkFilename: 'public/css/[id].[hash].css',
     }),
     new ManifestPlugin(),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
   ],
 }

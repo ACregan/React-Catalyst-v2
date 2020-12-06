@@ -118,12 +118,27 @@ module.exports = {
       // VIDEO FILES:
       {
         test: /\.mp4$/,
-        loader: 'file-loader?name=public/videos/[name].[ext]&mimetype=video/mp4',
+        loader: 'file-loader',
+        options: {
+          name: 'public/videos/[name].[ext]&mimetype=video/mp4',
+        },
       },
+      // {
+      //   test: /\.mp4$/,
+      //   loader: 'file-loader?name=public/videos/[name].[ext]&mimetype=video/mp4',
+      // },
+
       {
         test: /\.(webm|ogg)$/,
-        loader: 'file-loader?name=public/videos/[name].[ext]',
+        loader: 'file-loader',
+        options: {
+          name: 'public/videos/[name].[ext]',
+        },
       },
+      // {
+      //   test: /\.(webm|ogg)$/,
+      //   loader: 'file-loader?name=public/videos/[name].[ext]',
+      // },
     ],
   },
   plugins: [
@@ -138,7 +153,10 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
     new CopyWebpackPlugin({
-      patterns: [{ from: 'src/public/images/favicon', to: 'images/favicon' }]
+      patterns: [{ from: 'src/public/images/favicon', to: 'images/favicon' }],
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
     }),
   ],
   devtool: 'inline-source-map',
