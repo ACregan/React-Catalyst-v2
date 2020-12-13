@@ -12,6 +12,9 @@ import { Provider } from 'react-redux'
 import configureStore from './store/configureStore'
 const store = configureStore()
 
+// CONTEXT
+import ViewportContextProvider from './context/viewportContextProvider'
+
 const basenameVar = process.env.NODE_ENV == 'production' ? '/projects/catalyst2/' : '/'
 {
   /* <BrowserRouter basename={basenameVar} history={customHistory}> */
@@ -19,7 +22,9 @@ const basenameVar = process.env.NODE_ENV == 'production' ? '/projects/catalyst2/
 render(
   <Provider store={store}>
     <BrowserRouter>
-      <App />
+      <ViewportContextProvider>
+        <App />
+      </ViewportContextProvider>
     </BrowserRouter>
   </Provider>,
   document.getElementById('application')
