@@ -1,9 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useMemo, useRef, useEffect } from 'react'
 import useResizeObserver from '../hooks/useResizeObserver'
 // import ViewportContext from './context'
 import styles from './ViewportContextProvider.module'
 import 'matchmedia-polyfill'
 import 'matchmedia-polyfill/matchMedia.addListener'
+import throttle from 'lodash.throttle'
 
 export const ViewportContext = React.createContext()
 
@@ -30,16 +31,25 @@ const calculateScreenSize = (width) => {
 }
 
 const ViewportContextProvider = ({ children }) => {
-  const [appContainerRef, { contentRect }] = useResizeObserver()
+  const ref = useRef(null)
+  const [appContainerRef, { contentRect, target }] = useResizeObserver(ref)
   const [viewportHeight, setViewportHeight] = useState(ViewportContext.viewportHeight)
   const [viewportWidth, setViewportWidth] = useState(ViewportContext.viewportWidth)
+  const [viewportX, setViewportX] = useState(0)
+  const [viewportY, setViewportY] = useState(0)
+
+  const onScroll = (e) => {
+    setViewportX(e.target.scrollTop)
+    setViewportY(e.target.scrollLeft)
+  }
+  const delayedOnScroll = useMemo(() => throttle((e) => onScroll(e), 200), [])
 
   useEffect(() => {
     if (contentRect !== undefined) {
       setViewportWidth(contentRect.width)
       setViewportHeight(contentRect.height)
     }
-  }, [contentRect, setViewportWidth, setViewportHeight])
+  }, [contentRect, target, setViewportWidth, setViewportHeight, setViewportX, setViewportY])
 
   const contextObject = {
     viewportHeight,
@@ -47,11 +57,13 @@ const ViewportContextProvider = ({ children }) => {
     isMobile: window.matchMedia('only screen and (max-width: 900px)').matches,
     isPortrait: viewportWidth < viewportHeight,
     screenSize: calculateScreenSize(viewportWidth),
+    scrollX: viewportX,
+    scrollY: viewportY,
   }
 
   return (
     <ViewportContext.Provider value={contextObject}>
-      <article ref={appContainerRef} className={styles.contextContainer}>
+      <article ref={appContainerRef} className={styles.contextContainer} onScroll={delayedOnScroll}>
         {children}
       </article>
     </ViewportContext.Provider>

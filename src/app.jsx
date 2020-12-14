@@ -14,9 +14,15 @@ import './global.scss'
 import styles from './app.module'
 
 const App = () => {
-  const { screenSize, viewportWidth, viewportHeight, isMobile, isPortrait } = useContext(
-    ViewportContext
-  )
+  const {
+    screenSize,
+    viewportWidth,
+    viewportHeight,
+    isMobile,
+    isPortrait,
+    scrollX,
+    scrollY,
+  } = useContext(ViewportContext)
 
   return (
     <article className={styles.container}>
@@ -34,6 +40,8 @@ const App = () => {
         <p>viewportHeight = {viewportHeight}</p>
         <p>isMobile = {isMobile ? 'True' : 'False'}</p>
         <p>isPortrait = {isPortrait ? 'True' : 'False'}</p>
+        <p>X = {scrollX}</p>
+        <p>Y = {scrollY}</p>
         {/* <Switch>
           <Route exact path="/" component={HomeContent} />
           <Route path="/junk" component={JunkContent} />
