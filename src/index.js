@@ -2,6 +2,8 @@
 // Used for both 'dev' mode and 'production' mode builds
 import React from 'react'
 import { render } from 'react-dom'
+
+// APPLICATION ROOT COMPONENT
 import App from './app'
 
 // REACT ROUTER DOM
@@ -15,9 +17,11 @@ const store = configureStore()
 // CONTEXT
 import ViewportContextProvider from './context/viewportContextProvider'
 
-const basenameVar = process.env.NODE_ENV == 'production' ? '/projects/catalyst2/' : '/'
 {
-  /* <BrowserRouter basename={basenameVar} history={customHistory}> */
+  /* 
+  const basenameVar = process.env.NODE_ENV == 'production' ? '/projects/catalyst2/' : '/'
+  <BrowserRouter basename={basenameVar} history={customHistory}> 
+  */
 }
 render(
   <Provider store={store}>

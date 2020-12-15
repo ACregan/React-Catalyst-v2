@@ -39,8 +39,8 @@ const ViewportContextProvider = ({ children }) => {
   const [viewportY, setViewportY] = useState(0)
 
   const onScroll = (e) => {
-    setViewportX(e.target.scrollTop)
-    setViewportY(e.target.scrollLeft)
+    setViewportX(e.target.scrollLeft)
+    setViewportY(e.target.scrollTop)
   }
   const delayedOnScroll = useMemo(() => throttle((e) => onScroll(e), 200), [])
 
@@ -63,9 +63,9 @@ const ViewportContextProvider = ({ children }) => {
 
   return (
     <ViewportContext.Provider value={contextObject}>
-      <article ref={appContainerRef} className={styles.contextContainer} onScroll={delayedOnScroll}>
+      <div ref={appContainerRef} className={styles.contextContainer} onScroll={delayedOnScroll}>
         {children}
-      </article>
+      </div>
     </ViewportContext.Provider>
   )
 }

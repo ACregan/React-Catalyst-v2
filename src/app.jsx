@@ -12,6 +12,7 @@ import './public/css/typography.scss'
 import './global.scss'
 
 import styles from './app.module'
+import TopTest from './components/topTest/topTest'
 
 const App = () => {
   const {
@@ -26,22 +27,22 @@ const App = () => {
 
   return (
     <article className={styles.container}>
-      <nav className={styles.sidebarNav}>
+      <nav className={styles.sidebar}>
         <p>nav</p>
+        <p>ScreenSize = {screenSize}</p>
+        <p>viewportWidth = {viewportWidth}</p>
+        <p>viewportHeight = {viewportHeight}</p>
+        <p>isMobile = {isMobile ? 'True' : 'False'}</p>
+        <p>isPortrait = {isPortrait ? 'True' : 'False'}</p>
+        <p>Scroll X = {scrollX}</p>
+        <p>Scroll Y = {scrollY}</p>
       </nav>
       <header className={styles.header}>
         <h1>
           <strong>React</strong> Catalyst <sup>v.2</sup>
         </h1>
       </header>
-      <main className={styles.application}>
-        <p>ScreenSize = {screenSize}</p>
-        <p>viewportWidth = {viewportWidth}</p>
-        <p>viewportHeight = {viewportHeight}</p>
-        <p>isMobile = {isMobile ? 'True' : 'False'}</p>
-        <p>isPortrait = {isPortrait ? 'True' : 'False'}</p>
-        <p>X = {scrollX}</p>
-        <p>Y = {scrollY}</p>
+      <main className={styles.main}>
         {/* <Switch>
           <Route exact path="/" component={HomeContent} />
           <Route path="/junk" component={JunkContent} />
@@ -201,6 +202,8 @@ const App = () => {
           towards office. 8-bit weathered stimulate pre- office geodesic weathered assault claymore
           mine. bomb neon neural computer semiotics receding skyscraper soul-delay rifle.
         </p>
+
+        <TopTest />
       </main>
       <footer className={styles.footer}>
         <NavLink to={'/'}>HOME</NavLink>
