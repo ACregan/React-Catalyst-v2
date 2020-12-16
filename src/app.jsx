@@ -28,6 +28,22 @@ const App = () => {
   return (
     <article className={styles.container}>
       <nav className={styles.sidebar}>
+        <h3>Documentation</h3>
+        <ul>
+          <li>Usage</li>
+          <li>Dependancies</li>
+        </ul>
+        <h3>Additional Features</h3>
+        <ul>
+          <li>Base Styles</li>
+          <li>Viewport Context</li>
+          <li>Hooks</li>
+        </ul>
+        <h3>Optional Add-ons</h3>
+        <ul>
+          <li>React-Catalyst UI</li>
+        </ul>
+        <hr />
         <p>nav</p>
         <p>ScreenSize = {screenSize}</p>
         <p>viewportWidth = {viewportWidth}</p>
