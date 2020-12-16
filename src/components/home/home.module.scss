@@ -1,0 +1,90 @@
+.someClass{
+  color:black;
+  font-weight: bold;
+}
+
+.cubeContainer {
+  height: 200px;
+  margin: 0 auto;
+  position: relative;
+  top: 10em;
+  width: 200px;
+  // distance between the scene and the viewer
+  perspective:(600px);
+  // vanishing point of perspective default is in middle of the scene
+  perspective-origin:(50% 50%);
+}
+
+.cube {
+  height: 100%;
+  position: absolute;
+  transition: .5s all ease-in-out;
+
+  // preserve 3fd effect of child elements
+  // default value is 'flat'
+  // preserve effects of child elements
+  transform-style: preserve-3d;
+
+  /* panels global styles*/
+  // transform: rotateX(-20deg) rotateY(28deg);
+
+  // tells browser not to render the back of the element
+  // Accepts visible | hidden
+  backface-visibility: visible;
+
+  width: 100%;
+  
+  animation: spin 5s infinite linear; 
+  // &:hover {
+  //   cursor: pointer;
+  //   // panels global hover styles
+  //   transform: rotateX(-50deg) rotateY(0deg);
+  // }
+}
+
+.front,
+.back,
+.right,
+.left,
+.top,
+.bottom {
+  box-sizing: border-box;
+  display: block;
+  height: 200px;
+  position: absolute;
+  width: 200px;
+
+  // font-size: 2em;
+  // line-height: 6em;
+  // text-align: center;
+}
+
+.front { 
+    background: rgba(230,0,0,.5);
+    transform: translateZ(100px);
+}
+.back { 
+    background: rgba(200,0,0,.6);
+    transform: rotateY(180deg) rotateX(0deg) translateZ(100px);
+}
+.left { 
+    background: rgba(200,0,0,.5);
+    transform: rotateY(-90deg) translateZ(100px);
+}
+.right { 
+    background: rgba(200,0,0,.4);
+    transform: rotateY(90deg) translateZ(100px);
+}
+.top { 
+    background: rgba(200,0,0,.3);
+    transform: rotateX(90deg) translateZ(100px);
+}
+.bottom {
+    background: rgba(50,50,50,.5);
+    transform: rotateX(-90deg) rotateZ(-180deg) translateZ(100px);
+}
+
+@keyframes spin {
+  from {transform: rotateX(0) rotateY(0) }
+  to   {transform: rotateX(360deg) rotateY(360deg) }
+}

@@ -40,6 +40,7 @@ i{
   font-family: 'Karla-Italic';
 }
 
+.bold.italic,
 .boldItalic,
 i > strong,
 strong > i{
@@ -64,6 +65,5 @@ h1, h2, h3, h4, h5, h6, p {
   > strong > i{
     font-weight: 800;
     font-family: 'Karla-BoldItalic';
-
   }
 }

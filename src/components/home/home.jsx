@@ -1,14 +1,19 @@
 import React from 'react'
-import CounterExample from './counterExample/counterExample'
+import styles from './home.module.scss'
 
-const Home = () => (
-  <>
-    <p>I am regular copy</p>
-    <p className="bold">I am bold copy</p>
-    <p className="italic">I am italics copy</p>
-    <p className="boldItalic">I am bold italics copy</p>
-    <CounterExample />
-  </>
-)
+const Home = () => {
+  return (
+    <div className={styles.cubeContainer}>
+      <div className={styles.cube}>
+        <div className={styles.front}></div>
+        <div className={styles.back}></div>
+        <div className={styles.right}></div>
+        <div className={styles.left}></div>
+        <div className={styles.top}></div>
+        <div className={styles.bottom}></div>
+      </div>
+    </div>
+  )
+}
 
 export default Home

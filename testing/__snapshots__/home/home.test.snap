@@ -2,37 +2,31 @@
 
 exports[`should take a snapshot 1`] = `
 <DocumentFragment>
-  <p>
-    I am regular copy
-  </p>
-  <p
-    class="bold"
+  <div
+    class="cubeContainer"
   >
-    I am bold copy
-  </p>
-  <p
-    class="italic"
-  >
-    I am italics copy
-  </p>
-  <p
-    class="boldItalic"
-  >
-    I am bold italics copy
-  </p>
-  <div>
-    <label>
-      Redux Functional Component and Hooks Counter Example
-    </label>
-    <div>
-      Counter = 0
+    <div
+      class="cube"
+    >
+      <figure
+        class="front"
+      />
+      <figure
+        class="back"
+      />
+      <figure
+        class="right"
+      />
+      <figure
+        class="left"
+      />
+      <figure
+        class="top"
+      />
+      <figure
+        class="bottom"
+      />
     </div>
-    <button>
-      + 1
-    </button>
-    <button>
-      - 1
-    </button>
   </div>
 </DocumentFragment>
 `;

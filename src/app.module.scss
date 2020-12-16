@@ -5,32 +5,26 @@
   position: relative;
   display: grid;
   grid:
-    ' sidenav header '
-    ' sidenav main '
-    ' sidenav footer '
+    ' header '
+    ' main '
+    ' footer '
     ;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 90px 1fr 60px;
   min-height: 100vh;
 }
-  .sidebar{
-    position: relative;
-    grid-area: sidenav;
-    background: #333;
-    color: white;
-  }
   .header{
     position: relative;
     grid-area: header;
-    background: #666;
+    background: $darkGrey;
   }
   .main{
     position: relative;
     grid-area: main;
-    background: #999;
+    background: $lightGrey;
   }
   .footer{
     position: relative;
     grid-area: footer;
-    background: #BBB;
+    background: $midGrey;
   }
