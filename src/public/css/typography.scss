@@ -47,6 +47,40 @@ strong > i{
   font-family: 'Karla-BoldItalic';
 }
 
+h1{
+  font-size:4.8rem;
+  margin:1.6rem;
+}
+
+h2{
+  font-size:4.2rem;
+  margin:1.4rem;
+}
+
+h3{
+  font-size:3.6rem;
+  margin:1.2rem;
+}
+
+h4{
+  font-size:3rem;
+  margin:1rem;
+}
+
+h5{
+  font-size:2.4rem;
+  margin:1.2rem;
+}
+
+h6{
+  font-size:1.8rem;
+  margin:0.9rem;
+}
+
+p, label {
+  font-size: 1.2rem;
+  margin:0.4rem;
+}
 h1, h2, h3, h4, h5, h6, p {
   font-weight: 400;
   font-family: 'Karla-Regular';
@@ -56,14 +90,33 @@ h1, h2, h3, h4, h5, h6, p {
     font-family: 'Karla-Bold';
   }
 
+  > em,
   > i{
     font-weight: 400;
     font-family: 'Karla-Italic';
   }
 
+  > i > b,
+  > em > b,
   > i > strong,
+  > em > strong,
+  > b > em,
+  > b > i,
+  > strong > em,
   > strong > i{
     font-weight: 800;
     font-family: 'Karla-BoldItalic';
+  }
+  
+  sup{
+    font-size:50%;
+    display: inline-block;
+    transform: translateY(-0.2rem)
+  }
+
+  sub{
+    font-size:50%;
+    display: inline-block;
+    transform: translateY(0.2rem)
   }
 }

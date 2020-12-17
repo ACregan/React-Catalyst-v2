@@ -5,9 +5,43 @@
 //   color: $test-color;
 // }
 
-html{ // Webkit fix for mobile addressbar taking up vh space.
+
+// REMS DECLARATION
+html{
   height:100%;
+  font-size: 62.5%;
 }
+// XS
+@media (max-width: 599px) {
+  html{
+    font-size:65%;
+  }
+}
+// SM
+@media (min-width: 600px) {
+  html{
+    font-size:70%;
+  }
+}
+// MD
+@media (min-width: 900px) {
+  html{
+    font-size:75%;
+  }
+}
+// LG
+@media (min-width: 1200px) {
+  html{
+    font-size:90%;
+  }
+}
+// XL
+@media (min-width: 1800px) {
+  html{
+    font-size:100%;
+  }
+}
+
 body {
   background: grey;
   font-family: 'Karla-Regular';

@@ -1,29 +1,19 @@
 import React from 'react'
+import Cube from './cube/cube'
 import styles from './home.module.scss'
-import SvgIcon from '../common/svgIcon/svgIcon'
 
 const Home = () => {
   return (
-    <div className={styles.cubeContainer}>
-      <div className={styles.cube}>
-        <div className={styles.front}>
-          <SvgIcon image={'webpack'} />
-        </div>
-        <div className={styles.back}>
-          <SvgIcon image={'react'} />
-        </div>
-        <div className={styles.right}>
-          <SvgIcon image={'javascript'} />
-        </div>
-        <div className={styles.left}>
-          <SvgIcon image={'sass'} />
-        </div>
-        <div className={styles.top}>
-          <SvgIcon image={'css3'} />
-        </div>
-        <div className={styles.bottom}>
-          <SvgIcon image={'html5'} />
-        </div>
+    <div className={styles.container}>
+      <div className={styles.cubeComponentContainer}>
+        <Cube />
+      </div>
+      <div className={styles.contentContainer}>
+        <h1>
+          <strong>Lets Develop!</strong>
+        </h1>
+        <h5>I am also some content, pleased to meet you.</h5>
+        <p>Well, isnt this nice. All us content elements all in one place!</p>
       </div>
     </div>
   )

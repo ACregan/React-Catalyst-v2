@@ -5,25 +5,32 @@ import { NavLink, Switch, Route } from 'react-router-dom'
 import HomeContent from './components/home/home'
 
 import './public/css/normalize.css'
+import './public/css/scrollbars.scss'
 import './public/css/typography.scss'
 import './global.scss'
 import packageJson from '../package.json'
 
 import styles from './app.module'
+import SvgImg from './components/common/svgIcon/svgIcon'
 
 const App = () => {
   return (
     <article className={styles.container}>
       <header className={styles.header}>
-        <h1>
-          React <strong>Catalyst</strong>
-          <sup>
-            <i>
-              <small> v.</small>
-              {packageJson.version}
-            </i>
-          </sup>
-        </h1>
+        <div className={styles.headerIconContainer}>
+          <SvgImg image="CatalystLogo" />
+        </div>
+        <div className={styles.headerTextContainer}>
+          <h3>
+            React <strong>Catalyst</strong>
+            <sup>
+              <i>
+                <small> v.</small>
+                {packageJson.version}
+              </i>
+            </sup>
+          </h3>
+        </div>
       </header>
       <main className={styles.main}>
         <Switch>
@@ -31,6 +38,7 @@ const App = () => {
         </Switch>
       </main>
       <footer className={styles.footer}>
+        <SvgImg image="PerpetualSummer" />
         <NavLink to={'/'}>Perpetual Summer Ltd.</NavLink>
         <NavLink to={'/junk'}>Documentation</NavLink>
       </footer>

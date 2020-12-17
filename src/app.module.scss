@@ -10,14 +10,36 @@
     ' footer '
     ;
   grid-template-columns: 1fr;
-  grid-template-rows: 90px 1fr 60px;
+  grid-template-rows: 90px 1fr 120px;
   min-height: 100vh;
 }
   .header{
     position: relative;
     grid-area: header;
     background: $darkGrey;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: stretch;
   }
+
+    .headerIconContainer {
+      order: 0;
+      flex: 0 1 auto;
+      align-self: auto;
+      width:5rem;
+      height:5rem;
+      padding:0.5rem 1rem
+    }
+    .headerTextContainer {
+      order: 0;
+      flex: 1 1 auto;
+      align-self: auto;
+    }
+
   .main{
     position: relative;
     grid-area: main;
@@ -28,3 +50,8 @@
     grid-area: footer;
     background: $midGrey;
   }
+    .footer > svg {
+      max-height:7rem;
+      text-align: left;
+      width:300px;
+    }
