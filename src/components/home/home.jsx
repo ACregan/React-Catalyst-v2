@@ -1,16 +1,29 @@
 import React from 'react'
 import styles from './home.module.scss'
+import SvgIcon from '../common/svgIcon/svgIcon'
 
 const Home = () => {
   return (
     <div className={styles.cubeContainer}>
       <div className={styles.cube}>
-        <div className={styles.front}></div>
-        <div className={styles.back}></div>
-        <div className={styles.right}></div>
-        <div className={styles.left}></div>
-        <div className={styles.top}></div>
-        <div className={styles.bottom}></div>
+        <div className={styles.front}>
+          <SvgIcon image={'webpack'} />
+        </div>
+        <div className={styles.back}>
+          <SvgIcon image={'react'} />
+        </div>
+        <div className={styles.right}>
+          <SvgIcon image={'javascript'} />
+        </div>
+        <div className={styles.left}>
+          <SvgIcon image={'sass'} />
+        </div>
+        <div className={styles.top}>
+          <SvgIcon image={'css3'} />
+        </div>
+        <div className={styles.bottom}>
+          <SvgIcon image={'html5'} />
+        </div>
       </div>
     </div>
   )
