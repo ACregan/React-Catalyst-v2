@@ -1,11 +1,101 @@
-.container {
-  margin: 0 auto;
+@import '../../_variables.scss';
+
+
+.container{
+  box-sizing: border-box;
   position: relative;
+  display: grid;
+  grid:
+    ' header '
+    ' main '
+    ' footer '
+    ;
+  grid-template-columns: 1fr;
+  grid-template-rows: 90px 1fr 120px;
+  min-height: 100vh;
 }
 
-.cubeComponentContainer {
 
+.header{
+  position: relative;
+  grid-area: header;
+  background: $midGrey;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: stretch;
 }
-.contentContainer {
-  text-align: center;
+
+  .headerIconContainer {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    width:5rem;
+    height:5rem;
+    padding:0.5rem 1rem
+  }
+  .headerTextContainer {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+  }
+
+.main{
+  position: relative;
+  grid-area: main;
+  background: $lightGrey;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: stretch;
 }
+  .cubeComponentContainer {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+    text-align: center;
+  }
+  .contentContainer {
+    order: 0;
+    flex: 1 1 auto;
+    align-self: auto;
+    background: $red;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: stretch;
+  }
+    .leftContainer{
+      order: 0;
+      flex: 1 1 50%;
+      align-self: auto;
+    }
+    .accordionContainer{
+      order: 0;
+      flex: 1 1 50%;
+      align-self: auto;
+      padding: 2rem;
+    }
+
+.footer{
+  position: relative;
+  grid-area: footer;
+  background: $maroon;
+}
+  .footer svg {
+    // max-height:7rem;
+    text-align: left;
+    width:350px;
+    margin:0.5rem
+  }
+
+
+
