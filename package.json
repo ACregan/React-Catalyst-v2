@@ -1,6 +1,6 @@
 {
   "name": "catalyst2",
-  "version": "1.10.31",
+  "version": "2.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {

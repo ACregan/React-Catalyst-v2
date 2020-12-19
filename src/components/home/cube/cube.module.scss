@@ -1,5 +1,5 @@
 
-$baseFaceSize: 12rem;
+$baseFaceSize: 10rem;
 $imageMarginSize: 1rem;
 $cubeRotationVSpace: 6rem;
 
@@ -73,31 +73,36 @@ $cubeRotationVSpace: 6rem;
 }
 
 .front { 
-    background: rgba(0,0,0,.5);
-    transform: translateZ($baseFaceSize / 2);
-
-    // Webpack
-    // padding:1rem 2rem;
+  background: rgba(0,0,0,.5);
+  transform: translateZ($baseFaceSize / 2);
 }
 .back { 
-    background: rgba(0,0,0,.5);
-    transform: rotateY(180deg) rotateX(0deg) translateZ($baseFaceSize / 2);
+  background: rgba(0,0,0,.5);
+  transform: rotateY(180deg) rotateX(0deg) translateZ($baseFaceSize / 2);
 }
 .left { 
-    background: rgba(0,0,0,.5);
-    transform: rotateY(-90deg) translateZ($baseFaceSize / 2);
+  background: rgba(0,0,0,.5);
+  transform: rotateY(-90deg) translateZ($baseFaceSize / 2);
 }
 .right { 
-    background: rgba(0,0,0,.5);
-    transform: rotateY(90deg) translateZ($baseFaceSize / 2);
+  background: rgba(0,0,0,.5);
+  transform: rotateY(90deg) translateZ($baseFaceSize / 2);
 }
 .top { 
-    background: rgba(0,0,0,.5);
-    transform: rotateX(90deg) translateZ($baseFaceSize / 2);
+  background: rgba(0,0,0,.5);
+  transform: rotateX(90deg) translateZ($baseFaceSize / 2);
+
+  > svg{
+    transform: rotate(-90deg);
+  }
 }
 .bottom {
-    background: rgba(0,0,0,.5);
-    transform: rotateX(-90deg) rotateZ(-180deg) translateZ($baseFaceSize / 2);
+  background: rgba(0,0,0,.5);
+  transform: rotateX(-90deg) rotateZ(-180deg) translateZ($baseFaceSize / 2);
+  
+  > svg{
+    transform: rotate(90deg);
+  }
 }
 
 @keyframes spin {
