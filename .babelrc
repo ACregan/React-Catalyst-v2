@@ -11,6 +11,6 @@
     "@babel/plugin-transform-runtime",
     "@babel/plugin-syntax-dynamic-import",
     "react-hot-loader/babel",
-    "@babel/plugin-proposal-object-rest-spread",
+    "@babel/plugin-transform-spread",
   ]
 }
