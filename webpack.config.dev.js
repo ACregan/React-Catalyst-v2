@@ -129,7 +129,7 @@ module.exports = {
       // },
 
       {
-        test: /\.(webm|ogg)$/,
+        test: /\.(webm|ogg|mov|avi)$/,
         loader: 'file-loader',
         options: {
           name: 'public/videos/[name].[ext]',
