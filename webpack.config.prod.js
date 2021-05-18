@@ -20,7 +20,7 @@ module.exports = {
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/projects/catalyst2/',
+    publicPath: '/',
     filename: 'public/js/[name].js',
     chunkFilename: 'public/js/[name].[chunkhash].js',
   },
