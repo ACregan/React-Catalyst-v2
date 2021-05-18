@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react'
 import useResizeObserver from '../hooks/useResizeObserver'
+import useScrollPosition from '../hooks/useScrollPosition'
 // import ViewportContext from './context'
-import styles from './ViewportContextProvider.module'
 import 'matchmedia-polyfill'
 import 'matchmedia-polyfill/matchMedia.addListener'
 import throttle from 'lodash.throttle'
@@ -37,21 +37,41 @@ const ViewportContextProvider = ({ children }) => {
   const [viewportWidth, setViewportWidth] = useState(ViewportContext.viewportWidth)
   const [viewportX, setViewportX] = useState(0)
   const [viewportY, setViewportY] = useState(0)
+  const [pageSizeX, setPageSizeX] = useState(0)
+  const [pageSizeY, setPageSizeY] = useState(0)
 
-  const onScroll = (e) => {
-    setViewportX(e.target.scrollLeft)
-    setViewportY(e.target.scrollTop)
+  const setScrollPosition = () => {
+    setViewportX(window.pageXOffset)
+    setViewportY(window.pageYOffset)
   }
-  const delayedOnScroll = useMemo(() => throttle((e) => onScroll(e), 200), [])
+
+  useEffect(() => {
+    const watchScroll = () => {
+      window.addEventListener('scroll', setScrollPosition)
+    }
+    watchScroll()
+    return () => {
+      window.removeEventListener('scroll', setScrollPosition)
+    }
+  })
 
   useEffect(() => {
     if (contentRect !== undefined) {
-      setViewportWidth(contentRect.width)
-      setViewportHeight(contentRect.height)
+      setPageSizeX(contentRect.width)
+      setPageSizeY(contentRect.height)
     }
-  }, [contentRect, target, setViewportWidth, setViewportHeight, setViewportX, setViewportY])
+  }, [contentRect, setPageSizeX, setPageSizeY])
+
+  useEffect(() => {
+    if (window) {
+      setViewportWidth(window.innerWidth)
+      setViewportHeight(window.innerHeight)
+    }
+  }, [setViewportWidth, setViewportHeight])
 
   const contextObject = {
+    pageSizeX,
+    pageSizeY,
     viewportHeight,
     viewportWidth,
     isMobile: window.matchMedia('only screen and (max-width: 900px)').matches,
@@ -63,9 +83,7 @@ const ViewportContextProvider = ({ children }) => {
 
   return (
     <ViewportContext.Provider value={contextObject}>
-      <div ref={appContainerRef} className={styles.contextContainer} onScroll={delayedOnScroll}>
-        {children}
-      </div>
+      <div ref={appContainerRef}>{children}</div>
     </ViewportContext.Provider>
   )
 }

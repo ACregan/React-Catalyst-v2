@@ -129,7 +129,7 @@ module.exports = {
       // },
 
       {
-        test: /\.(webm|ogg)$/,
+        test: /\.(webm|ogg|mov|avi)$/,
         loader: 'file-loader',
         options: {
           name: 'public/videos/[name].[ext]',
@@ -157,6 +157,9 @@ module.exports = {
     }),
     new webpack.ProvidePlugin({
       process: 'process/browser',
+    }),
+    new webpack.DefinePlugin({
+      __VERSION: JSON.stringify(packageJson.version),
     }),
   ],
   devtool: 'inline-source-map',
