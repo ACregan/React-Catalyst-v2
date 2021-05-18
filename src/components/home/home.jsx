@@ -54,7 +54,11 @@ const Home = () => {
             <h6>Documentation</h6>
             <p>
               Full Documentation of the built-in features and capabilities of React Catalyst can be
-              found here.
+              found{' '}
+              <a href="https://react-catalyst.perpetualsummer.ltd/" target="_blank">
+                here
+              </a>
+              .
             </p>
           </div>
           <div className={styles.rightContainer}>
