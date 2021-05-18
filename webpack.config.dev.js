@@ -3,6 +3,7 @@ const path = require('path')
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
+const packageJSON = require('./package.json')
 
 module.exports = {
   mode: 'development',
@@ -142,24 +143,24 @@ module.exports = {
     ],
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: './catalyst/dev-server/index.html',
-      inject: false, // this prevents 2 script tags, its manually typed in the html template in dev.
-    }),
+    // new HtmlWebPackPlugin({
+    //   template: './catalyst/dev-server/index.html',
+    //   inject: false, // this prevents 2 script tags, its manually typed in the html template in dev.
+    // }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
-    new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css',
-    }),
-    new CopyWebpackPlugin({
-      patterns: [{ from: 'src/public/images/favicon', to: 'images/favicon' }],
-    }),
+    // new MiniCssExtractPlugin({
+    //   filename: '[name].css',
+    //   chunkFilename: '[id].css',
+    // }),
+    // new CopyWebpackPlugin({
+    //   patterns: [{ from: 'src/public/images/favicon', to: 'images/favicon' }],
+    // }),
     new webpack.ProvidePlugin({
       process: 'process/browser',
     }),
     new webpack.DefinePlugin({
-      __VERSION: JSON.stringify(packageJson.version),
+      __VERSION: JSON.stringify(packageJSON.version),
     }),
   ],
   devtool: 'inline-source-map',

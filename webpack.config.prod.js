@@ -6,6 +6,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const packageJSON = require('./package.json')
 const webpack = require('webpack')
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -19,7 +20,7 @@ module.exports = {
   target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/projects/catalyst2/',
+    publicPath: '/',
     filename: 'public/js/[name].js',
     chunkFilename: 'public/js/[name].[chunkhash].js',
   },
@@ -169,20 +170,12 @@ module.exports = {
     ],
   },
   plugins: [
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-      reportFilename: `../catalyst/bundleReports/ProductionBundleReport_${packageJSON.version}.html`,
-      analyzerMode: 'static',
-    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',
     }),
     new CopyWebpackPlugin({
-      patterns: [
-        { from: 'src/public/images/favicon', to: 'public/images/favicon' },
-        { from: 'src/.htaccess', to: './' },
-      ],
+      patterns: [{ from: 'src/.htaccess', to: './' }],
     }),
     new MiniCssExtractPlugin({
       filename: 'public/css/[name].[hash].css',
@@ -194,6 +187,17 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       __VERSION: JSON.stringify(packageJSON.version),
+    }),
+    new BundleAnalyzerPlugin({
+      openAnalyzer: false,
+      reportFilename: `../catalyst/bundleReports/ProductionBundleReport_${packageJSON.version}.html`,
+      analyzerMode: 'static',
+    }),
+    new FaviconsWebpackPlugin({
+      logo: './src/public/images/favicon/favicon.svg',
+      outputPath: './public/images/favicon',
+      publicPath: './public/images/favicon',
+      prefix: '',
     }),
   ],
 }
