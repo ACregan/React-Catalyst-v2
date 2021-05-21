@@ -73,12 +73,21 @@ const Home = () => {
               the code for this landing page and can be safely removed.
             </p>
 
-            <h6>React Catalyst UI</h6>
+            <h6>Catalyst Elements</h6>
             <p>
-              You can use <b>React Catalyst UI</b> to to further ease and aid the development
-              process. This library provides a number of configurable react components such as Input
-              Fields, Table components, Layout components and much more. For a full list of the
-              available components, click Here.
+              You can use the sister library of the React Catalyst development environment,{' '}
+              <b>Catalyst Elements</b> to to further ease and aid the development process. This
+              library provides a number of configurable react components such as Input Fields, Table
+              components, Layout components and much more. For a full list of the available
+              components, click{' '}
+              <a
+                href="https://catalyst-elements.perpetualsummer.ltd/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                here
+              </a>
+              .
             </p>
           </div>
         </div>
