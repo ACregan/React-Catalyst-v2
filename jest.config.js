@@ -42,12 +42,19 @@ module.exports = {
   // coverageThreshold: undefined,
   coverageThreshold: {
     global: {
-      statements: 70,
-      branches: 70,
-      functions: 40,
-      lines: 70,
+      statements: 0, // 70,
+      branches: 0, // 70,
+      functions: 0, // 40,
+      lines: 0, // 70,
     },
   },
+  /** NOTE ABOUT TEST COVERAGE:
+   * The above commented out values are the recommended coverage thresholds.
+   * We do not enforce these by default as it could prevent you from committing
+   * your work if you are not writing tests as you write your code.
+   * See the following link for more details:
+   * https://react-catalyst.perpetualsummer.ltd/Features#Testing
+   *  */
 
   // A path to a custom dependency extractor
   // dependencyExtractor: undefined,
