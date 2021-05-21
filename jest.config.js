@@ -20,7 +20,7 @@ module.exports = {
   // collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  // collectCoverageFrom: undefined,
+  collectCoverageFrom: ['**/src/**/*.{js,jsx}'],
 
   // The directory where Jest should output its coverage files
   // coverageDirectory: undefined,
@@ -40,6 +40,14 @@ module.exports = {
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
+  coverageThreshold: {
+    global: {
+      statements: 70,
+      branches: 70,
+      functions: 40,
+      lines: 70,
+    },
+  },
 
   // A path to a custom dependency extractor
   // dependencyExtractor: undefined,
@@ -79,8 +87,7 @@ module.exports = {
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
   moduleNameMapper: {
-    '\\.(module|css|less|scss|sss|styl)$':
-      '<rootDir>/node_modules/jest-css-modules',
+    '\\.(module|css|less|scss|sss|styl)$': '<rootDir>/node_modules/jest-css-modules',
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -97,6 +104,7 @@ module.exports = {
 
   // Run tests from one or more projects
   // projects: undefined,
+  projects: ['./testing/jest.lint.js', './testing/jest.client.js'],
 
   // Use this configuration option to add custom reporters to Jest
   // reporters: undefined,
@@ -120,7 +128,7 @@ module.exports = {
   // roots: [
   //   "<rootDir>"
   // ],
-  roots: ['<rootDir>/src'],
+  roots: ['<rootDir>'],
 
   // Allows you to use a custom runner instead of Jest's default test runner
   // runner: "jest-runner",
@@ -139,7 +147,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: 'jsdom',
+  testEnvironment: 'jest-environment-jsdom',
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},
@@ -197,4 +205,10 @@ module.exports = {
 
   // Whether to use watchman for file crawling
   // watchman: true,
+
+  watchPlugins: [
+    'jest-watch-select-projects',
+    'jest-watch-typeahead/filename',
+    'jest-watch-typeahead/testname',
+  ],
 }
