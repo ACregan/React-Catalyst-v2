@@ -4,7 +4,7 @@ import { ViewportContext } from '../context/viewportContextProvider'
 
 /**
  * Get screen size based on the width value passed in
- * @param width Width (in pixeld) of the screen or container
+ * @param width Width (in pixels) of the screen or container
  * @returns A string, one of: 'xs', 'sm', 'md', 'lg' or 'xl'
  */
 export const getScreenSize = (width) => {
