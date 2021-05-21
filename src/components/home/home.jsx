@@ -1,5 +1,4 @@
-import React, { Fragment, lazy, Suspense, useState, useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import React from 'react'
 import Cube from './cube/cube'
 import styles from './home.module.scss'
 import SvgImg from '../common/svgIcon/svgIcon'
@@ -55,7 +54,11 @@ const Home = () => {
             <p>
               Full Documentation of the built-in features and capabilities of React Catalyst can be
               found{' '}
-              <a href="https://react-catalyst.perpetualsummer.ltd/" target="_blank">
+              <a
+                href="https://react-catalyst.perpetualsummer.ltd/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 here
               </a>
               .

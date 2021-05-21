@@ -25,6 +25,11 @@ module.exports = {
     browser: true,
     'cypress/globals': true,
   },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   overrides: [
     {
       files: ['**/src/**'],

@@ -9,8 +9,6 @@ import './public/css/scrollbars.scss'
 import './public/css/typography.scss'
 import './global.scss'
 
-import styles from './app.module'
-
 const App = () => {
   return (
     <Switch>

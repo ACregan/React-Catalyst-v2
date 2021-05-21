@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, cleanup, getByTestId, fireEvent } from 'testUtils'
+import { render, cleanup } from 'testUtils'
 import Home from './home'
 
 afterEach(cleanup)
@@ -356,6 +356,7 @@ it('should take a snapshot', () => {
                   Full Documentation of the built-in features and capabilities of React Catalyst can be found 
                   <a
                     href="https://react-catalyst.perpetualsummer.ltd/"
+                    rel="noreferrer"
                     target="_blank"
                   >
                     here
