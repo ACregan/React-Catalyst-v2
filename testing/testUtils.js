@@ -6,6 +6,7 @@ import { render } from '@testing-library/react'
 // import defaultStrings from 'i18n/en-x-default'
 
 import { Provider } from 'react-redux'
+import ViewportContextProvider from '../src/context/viewportContextProvider'
 import configureStore from '../src/store/configureStore'
 const store = configureStore()
 
@@ -14,13 +15,14 @@ import { BrowserRouter } from 'react-router-dom'
 const AllTheProviders = ({ children }) => {
   return (
     <Provider store={store}>
-      <BrowserRouter basename={'/'}>{children}</BrowserRouter>
+      <BrowserRouter basename={'/'}>
+        <ViewportContextProvider>{children}</ViewportContextProvider>
+      </BrowserRouter>
     </Provider>
   )
 }
 
-const customRender = (ui, options) =>
-  render(ui, { wrapper: AllTheProviders, ...options })
+const customRender = (ui, options) => render(ui, { wrapper: AllTheProviders, ...options })
 
 // re-export everything
 export * from '@testing-library/react'
