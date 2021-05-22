@@ -1,0 +1,12 @@
+node_modules/
+dist/
+lib/
+docs/
+coverage/
+catalyst/
+.git/
+.history/
+testing/
+webpack.config.dev.js
+webpack.config.prod.js
+webpack.config.site.js
