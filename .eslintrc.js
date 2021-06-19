@@ -12,6 +12,7 @@ module.exports = {
     strict: 0,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'no-unused-vars': 'warn',
   },
   extends: [
     'eslint:recommended',
@@ -20,6 +21,7 @@ module.exports = {
     'plugin:cypress/recommended',
   ],
   env: {
+    es6: true,
     jest: true,
     node: true,
     browser: true,
