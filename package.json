@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "run-s bump:patch start-dev-server",
+    "start": "run-s start-dev-server",
     "start-dev-server": "cross-env NODE_ENV=development babel-node catalyst/dev-server/server.js",
-    "prebuild": "run-s dist-flush",
+    "prebuild": "run-s bump:patch dist-flush",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "dist-flush": "rimraf ./dist",
     "ssr-start": "run-s dist-flush ssr-build ssr-server",
