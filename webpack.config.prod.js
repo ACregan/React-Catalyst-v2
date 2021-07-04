@@ -148,7 +148,7 @@ module.exports = {
         test: /\.mp4$/,
         loader: 'file-loader',
         options: {
-          name: 'public/videos/[name].[ext]&mimetype=video/mp4',
+          name: 'public/videos/[name].[ext]',
         },
       },
       // {
