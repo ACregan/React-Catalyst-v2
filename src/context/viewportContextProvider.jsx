@@ -65,7 +65,9 @@ const ViewportContextProvider = ({ children }) => {
 
   return (
     <ViewportContext.Provider value={contextObject}>
-      <div ref={appContainerRef}>{children}</div>
+      <div ref={appContainerRef} style={{ height: '100vh', margin: 0 }}>
+        {children}
+      </div>
     </ViewportContext.Provider>
   )
 }
