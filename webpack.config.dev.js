@@ -90,56 +90,30 @@ module.exports = {
       {
         test: /\.(woff(2)?|ttf|eot|svg)?$/,
         include: path.resolve(__dirname + '/src/public/fonts'),
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'public/fonts/',
-            },
-          },
-        ],
+        type: 'asset/resource',
+        generator: {
+          filename: 'public/fonts/[hash][ext][query]',
+        },
       },
 
       // IMAGES
       {
         test: /\.(png|svg|jpg|gif)$/,
         exclude: path.resolve(__dirname + '/src/public/fonts'),
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'public/images/',
-            },
-          },
-        ],
+        type: 'asset/resource',
+        generator: {
+          filename: 'public/images/[hash][ext][query]',
+        },
       },
 
       // VIDEO FILES:
       {
-        test: /\.mp4$/,
-        loader: 'file-loader',
-        options: {
-          name: 'public/videos/[name].[ext]&mimetype=video/mp4',
+        test: /\.(mp4|mkv|avi|mpg|mpeg|3gp|mov|wmv|webm|ogg)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'public/video/[hash][ext][query]',
         },
       },
-      // {
-      //   test: /\.mp4$/,
-      //   loader: 'file-loader?name=public/videos/[name].[ext]&mimetype=video/mp4',
-      // },
-
-      {
-        test: /\.(webm|ogg|mov|avi)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'public/videos/[name].[ext]',
-        },
-      },
-      // {
-      //   test: /\.(webm|ogg)$/,
-      //   loader: 'file-loader?name=public/videos/[name].[ext]',
-      // },
     ],
   },
   plugins: [
