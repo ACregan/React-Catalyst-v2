@@ -41,12 +41,6 @@ module.exports = {
             return `npm.${packageName.replace('@', '')}`
           },
         },
-        // vendor: {
-        //   test: /node_modules/,
-        //   chunks: 'initial',
-        //   name: 'vendor',
-        //   enforce: true,
-        // },
       },
     },
   },
@@ -59,7 +53,7 @@ module.exports = {
         use: ['babel-loader', 'eslint-loader'],
       },
 
-      // HTML (TODO: Ejs or Handlebars)
+      // HTML
       {
         test: /\.html$/,
         use: [
