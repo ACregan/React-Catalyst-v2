@@ -7,6 +7,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
     alias: { 'react-dom': '@hot-loader/react-dom' },
+    modules: ['node_modules'],
   },
   entry: ['webpack-hot-middleware/client?reload=true', './src/index.js'],
   target: 'web',

@@ -12,6 +12,7 @@ module.exports = {
   mode: 'production',
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
+    modules: ['node_modules'],
   },
   entry: {
     vendor: path.resolve(__dirname, 'src/vendor'),
