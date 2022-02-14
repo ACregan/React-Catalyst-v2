@@ -1,6 +1,6 @@
 import { hot } from 'react-hot-loader/root'
 import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import HomeContent from './components/home/home'
 
@@ -11,9 +11,9 @@ import './global.scss'
 
 const App = () => {
   return (
-    <Switch>
-      <Route exact path="/" component={HomeContent} />
-    </Switch>
+    <Routes>
+      <Route exact path="/" element={<HomeContent />} />
+    </Routes>
   )
 }
 
