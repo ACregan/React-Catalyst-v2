@@ -7,6 +7,7 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const packageJSON = require('./package.json')
 const webpack = require('webpack')
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
   mode: 'production',
@@ -51,7 +52,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader'],
       },
 
       // HTML
@@ -139,6 +140,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new ESLintPlugin(),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html',
