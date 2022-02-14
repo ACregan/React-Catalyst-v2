@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const packageJSON = require('./package.json')
+const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
   mode: 'development',
@@ -27,7 +28,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader'],
       },
 
       // HTML
@@ -115,6 +116,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new ESLintPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
