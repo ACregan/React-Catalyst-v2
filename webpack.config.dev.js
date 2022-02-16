@@ -72,7 +72,7 @@ module.exports = {
         exclude: /\.module.(s(a|c)ss)$/,
         use: [
           'style-loader',
-          'css-loader',
+          { loader: 'css-loader', options: { modules: true } },
           {
             loader: 'postcss-loader',
           },

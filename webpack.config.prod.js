@@ -96,7 +96,7 @@ module.exports = {
         exclude: /\.module.(s(a|c)ss)$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          { loader: 'css-loader', options: { modules: true } },
           {
             loader: 'postcss-loader',
           },
