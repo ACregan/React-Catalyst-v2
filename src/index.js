@@ -1,7 +1,7 @@
 // WEB BUILD Entry point
 // Used for both 'dev' mode and 'production' mode builds
 import React from 'react'
-import { render } from 'react-dom'
+import { createRoot } from 'react-dom/client'
 
 // APPLICATION ROOT COMPONENT
 import App from './app'
@@ -17,19 +17,15 @@ const store = configureStore()
 // CONTEXT
 import ViewportContextProvider from './context/viewportContextProvider'
 
-{
-  /* 
-  const basenameVar = process.env.NODE_ENV == 'production' ? '/projects/catalyst2/' : '/'
-  <BrowserRouter basename={basenameVar} history={customHistory}> 
-  */
-}
-render(
+// RENDER ROOT COMPONENT
+const container = document.getElementById('application')
+const root = createRoot(container)
+root.render(
   <Provider store={store}>
     <BrowserRouter>
       <ViewportContextProvider>
         <App />
       </ViewportContextProvider>
     </BrowserRouter>
-  </Provider>,
-  document.getElementById('application')
+  </Provider>
 )
