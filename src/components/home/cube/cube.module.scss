@@ -74,23 +74,23 @@ $cubeRotationVSpace: 6rem;
 
 .front { 
   background: rgba(0,0,0,.5);
-  transform: translateZ($baseFaceSize / 2);
+  transform: translateZ(calc(calc($baseFaceSize / 2)));
 }
 .back { 
   background: rgba(0,0,0,.5);
-  transform: rotateY(180deg) rotateX(0deg) translateZ($baseFaceSize / 2);
+  transform: rotateY(180deg) rotateX(0deg) translateZ(calc($baseFaceSize / 2));
 }
 .left { 
   background: rgba(0,0,0,.5);
-  transform: rotateY(-90deg) translateZ($baseFaceSize / 2);
+  transform: rotateY(-90deg) translateZ(calc($baseFaceSize / 2));
 }
 .right { 
   background: rgba(0,0,0,.5);
-  transform: rotateY(90deg) translateZ($baseFaceSize / 2);
+  transform: rotateY(90deg) translateZ(calc($baseFaceSize / 2));
 }
 .top { 
   background: rgba(0,0,0,.5);
-  transform: rotateX(90deg) translateZ($baseFaceSize / 2);
+  transform: rotateX(90deg) translateZ(calc($baseFaceSize / 2));
 
   > svg{
     transform: rotate(-90deg);
@@ -98,7 +98,7 @@ $cubeRotationVSpace: 6rem;
 }
 .bottom {
   background: rgba(0,0,0,.5);
-  transform: rotateX(-90deg) rotateZ(-180deg) translateZ($baseFaceSize / 2);
+  transform: rotateX(-90deg) rotateZ(-180deg) translateZ(calc($baseFaceSize / 2));
   
   > svg{
     transform: rotate(90deg);
