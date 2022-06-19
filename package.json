@@ -1,6 +1,6 @@
 {
   "name": "catalyst2",
-  "version": "2.0.14",
+  "version": "2.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -114,7 +114,6 @@
     "postcss-loader": "^6.2.1",
     "prettier": "^2.5.1",
     "prop-types": "^15.8.1",
-    "react-hot-loader": "^4.13.0",
     "react-refresh": "^0.14.0",
     "redux-immutable-state-invariant": "^2.1.0",
     "sass": "^1.49.7",
@@ -135,8 +134,8 @@
     "@babel/runtime": "^7.17.2",
     "lodash.throttle": "^4.1.1",
     "matchmedia-polyfill": "^0.3.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-router-redux": "^4.0.8",
