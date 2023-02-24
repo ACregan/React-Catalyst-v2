@@ -2,12 +2,12 @@ const webpack = require('webpack')
 const path = require('path')
 const packageJSON = require('./package.json')
 const ESLintPlugin = require('eslint-webpack-plugin')
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin')
 
 module.exports = {
   mode: 'development',
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
-    alias: { 'react-dom': '@hot-loader/react-dom' },
     modules: ['node_modules'],
   },
   entry: ['webpack-hot-middleware/client?reload=true', './src/index.js'],
@@ -28,7 +28,14 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader'],
+        use: [
+          {
+            loader: require.resolve('babel-loader'),
+            options: {
+              plugins: [require.resolve('react-refresh/babel')],
+            },
+          },
+        ],
       },
 
       // HTML
@@ -72,7 +79,7 @@ module.exports = {
         exclude: /\.module.(s(a|c)ss)$/,
         use: [
           'style-loader',
-          'css-loader',
+          { loader: 'css-loader', options: { modules: true } },
           {
             loader: 'postcss-loader',
           },
@@ -118,6 +125,7 @@ module.exports = {
   plugins: [
     new ESLintPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new ReactRefreshWebpackPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
       process: 'process/browser',

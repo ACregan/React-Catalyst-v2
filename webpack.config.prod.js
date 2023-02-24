@@ -6,7 +6,8 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPl
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin')
 const packageJSON = require('./package.json')
 const webpack = require('webpack')
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+// const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+const WebpackFavicons = require('webpack-favicons')
 const ESLintPlugin = require('eslint-webpack-plugin')
 
 module.exports = {
@@ -96,7 +97,7 @@ module.exports = {
         exclude: /\.module.(s(a|c)ss)$/,
         use: [
           MiniCssExtractPlugin.loader,
-          'css-loader',
+          { loader: 'css-loader', options: { modules: true } },
           {
             loader: 'postcss-loader',
           },
@@ -164,11 +165,24 @@ module.exports = {
       reportFilename: `../catalyst/bundleReports/ProductionBundleReport_${packageJSON.version}.html`,
       analyzerMode: 'static',
     }),
-    new FaviconsWebpackPlugin({
-      logo: './src/public/images/favicon/favicon.svg',
-      outputPath: './public/images/favicon',
-      publicPath: './public/images/favicon',
-      prefix: '',
+    // new FaviconsWebpackPlugin({
+    //   logo: './src/public/images/favicon/favicon.svg',
+    //   outputPath: './public/images/favicon',
+    //   publicPath: './public/images/favicon',
+    //   prefix: '',
+    // }),
+    new WebpackFavicons({
+      src: './src/public/images/favicon/favicon.svg',
+      path: './public/images/favicon',
+      // background: '#000',
+      // theme_color: '#000',
+      icons: {
+        favicons: true,
+        android: true,
+        appleIcon: true,
+        appleStartup: true,
+        windows: true,
+      },
     }),
   ],
 }
