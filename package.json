@@ -9,6 +9,7 @@
     "prebuild": "run-s bump:patch dist-flush",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
     "dist-flush": "rimraf ./dist",
+    "dist-server": "babel-node ./catalyst/dist-server/server.js",
     "ssr-start": "run-s dist-flush ssr-build ssr-server",
     "ssr-build": "cross-env NODE_ENV=production webpack --config webpack.config.ssr.js",
     "ssr-server": "cross-env NODE_ENV=production babel-node src/ssr-server.js",
