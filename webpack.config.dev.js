@@ -7,7 +7,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 module.exports = {
   mode: 'development',
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.scss'],
     modules: ['node_modules'],
   },
   entry: ['webpack-hot-middleware/client?reload=true', './src/index.js'],
@@ -36,6 +36,13 @@ module.exports = {
             },
           },
         ],
+      },
+
+      // Typescript
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
 
       // HTML

@@ -13,7 +13,7 @@ const ESLintPlugin = require('eslint-webpack-plugin')
 module.exports = {
   mode: 'production',
   resolve: {
-    extensions: ['.js', '.jsx', '.scss'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.scss'],
     modules: ['node_modules'],
   },
   entry: {
@@ -54,6 +54,13 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
+      },
+
+      // Typescript
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
       },
 
       // HTML

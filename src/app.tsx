@@ -8,10 +8,10 @@ import './public/css/scrollbars.scss'
 import './public/css/typography.scss'
 import './global.scss'
 
-const App = () => {
+const App = ():JSX.Element => {
   return (
     <Routes>
-      <Route exact path="/" element={<HomeContent />} />
+      <Route path="/" element={<HomeContent />} />
     </Routes>
   )
 }

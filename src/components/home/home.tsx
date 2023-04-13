@@ -4,7 +4,7 @@ import styles from './home.module.scss'
 import SvgImg from '../common/svgIcon/svgIcon'
 import packageJson from '../../../package.json'
 
-const Home = () => {
+const Home = ():JSX.Element => {
   return (
     <article className={styles.container}>
       <header className={styles.header}>
