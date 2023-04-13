@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './cube.module.scss'
 import SvgIcon from '../../common/svgIcon/svgIcon'
 
-const Cube = () => {
+const Cube = (): JSX.Element => {
   return (
     <div className={styles.cubeContainer}>
       <div className={styles.cube}>

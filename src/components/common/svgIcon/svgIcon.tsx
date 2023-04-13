@@ -1,7 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const SvgImg = ({ image }) => {
+export type SVGiconListTypes = 
+  'MenuToggleArrow' |
+  'ManchesterBee' |
+  'PortfolioIcon' |
+  'HomeIcon' |
+  'CvIcon' |
+  'ContactIcon' |
+  'CatalystLogoText' |
+  'CatalystLogo' |
+  'wordFileIcon' |
+  'rtfFileIcon' |
+  'pdfFileIcon' |
+  'odtFileIcon' |
+  'oldTelephone' |
+  'email' |
+  'PerpetualSummer' |
+  'webpack' |
+  'sass' |
+  'react' |
+  'javascript' |
+  'html5' |
+  'css3' |
+  string
+
+type SVGiconProp = {
+  image: SVGiconListTypes
+}
+
+const SvgImg = ({ image }: SVGiconProp) => {
   switch (image) {
     case 'MenuToggleArrow':
       return (

@@ -1,6 +1,6 @@
 {
   "name": "catalyst2",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -79,7 +79,6 @@
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
     "babel-plugin-dynamic-import-node": "^2.3.3",
-    "better-docs": "^2.7.2",
     "copy-webpack-plugin": "^11.0.0",
     "core-js": "^3.21.0",
     "cross-env": "^7.0.3",
@@ -119,6 +118,9 @@
     "sass": "^1.49.7",
     "sass-loader": "^13.0.0",
     "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.4",
+    "typescript-plugin-css-modules": "^5.0.1",
     "url-loader": "^4.1.1",
     "webpack": "^5.68.0",
     "webpack-bundle-analyzer": "^4.5.0",
@@ -132,6 +134,9 @@
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "@babel/runtime": "^7.17.2",
+    "@types/css-modules": "^1.0.2",
+    "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
     "lodash.throttle": "^4.1.1",
     "matchmedia-polyfill": "^0.3.2",
     "react": "18.2.0",
