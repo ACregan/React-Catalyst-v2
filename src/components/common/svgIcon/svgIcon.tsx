@@ -29,7 +29,7 @@ type SVGiconProp = {
   image: SVGiconListTypes
 }
 
-const SvgImg = ({ image }: SVGiconProp) => {
+const SvgImg: React.FC<SVGiconProp> = ({ image }) => {
   switch (image) {
     case 'MenuToggleArrow':
       return (
