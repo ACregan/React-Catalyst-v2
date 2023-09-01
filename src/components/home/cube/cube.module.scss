@@ -1,4 +1,3 @@
-
 $baseFaceSize: 10rem;
 $imageMarginSize: 1rem;
 $cubeRotationVSpace: 6rem;
@@ -9,15 +8,15 @@ $cubeRotationVSpace: 6rem;
   margin: $cubeRotationVSpace auto;
   position: relative;
   // distance between the scene and the viewer
-  perspective:($baseFaceSize * 3);
+  perspective: ($baseFaceSize * 3);
   // vanishing point of perspective default is in middle of the scene
-  perspective-origin:(50% 50%);
+  perspective-origin: (50% 50%);
 }
 
 .cube {
   height: 100%;
   position: absolute;
-  transition: .5s all ease-in-out;
+  transition: 0.5s all ease-in-out;
 
   // preserve 3fd effect of child elements
   // default value is 'flat'
@@ -32,8 +31,8 @@ $cubeRotationVSpace: 6rem;
   backface-visibility: visible;
 
   width: 100%;
-  
-  animation: spin 5s infinite linear; 
+
+  animation: spin 5s infinite linear;
 
   text-align: center;
   // &:hover {
@@ -67,45 +66,49 @@ $cubeRotationVSpace: 6rem;
     order: 0;
     flex: 0 1 auto;
     align-self: auto;
-    max-height:$baseFaceSize - ($imageMarginSize * 2); 
-    max-width:$baseFaceSize - ($imageMarginSize * 2);
+    max-height: $baseFaceSize - ($imageMarginSize * 2);
+    max-width: $baseFaceSize - ($imageMarginSize * 2);
   }
 }
 
-.front { 
-  background: rgba(0,0,0,.5);
+.front {
+  background: rgba(0, 0, 0, 0.5);
   transform: translateZ(calc(calc($baseFaceSize / 2)));
 }
-.back { 
-  background: rgba(0,0,0,.5);
+.back {
+  background: rgba(0, 0, 0, 0.5);
   transform: rotateY(180deg) rotateX(0deg) translateZ(calc($baseFaceSize / 2));
 }
-.left { 
-  background: rgba(0,0,0,.5);
+.left {
+  background: rgba(0, 0, 0, 0.5);
   transform: rotateY(-90deg) translateZ(calc($baseFaceSize / 2));
 }
-.right { 
-  background: rgba(0,0,0,.5);
+.right {
+  background: rgba(0, 0, 0, 0.5);
   transform: rotateY(90deg) translateZ(calc($baseFaceSize / 2));
 }
-.top { 
-  background: rgba(0,0,0,.5);
+.top {
+  background: rgba(0, 0, 0, 0.5);
   transform: rotateX(90deg) translateZ(calc($baseFaceSize / 2));
 
-  > svg{
+  > svg {
     transform: rotate(-90deg);
   }
 }
 .bottom {
-  background: rgba(0,0,0,.5);
+  background: rgba(0, 0, 0, 0.5);
   transform: rotateX(-90deg) rotateZ(-180deg) translateZ(calc($baseFaceSize / 2));
-  
-  > svg{
+
+  > svg {
     transform: rotate(90deg);
   }
 }
 
 @keyframes spin {
-  from {transform: rotateX(0) rotateY(0) }
-  to   {transform: rotateX(360deg) rotateY(360deg) }
+  from {
+    transform: rotateX(0) rotateY(0);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(720deg);
+  }
 }
