@@ -24,7 +24,7 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "cy:record": "cypress run --record --key YOUR_PROJECT_KEY_HERE",
-    "lint": "jest --config testing/jsest.lint.js",
+    "lint": "jest --config testing/jest.lint.js",
     "docs": "./node_modules/.bin/jsdoc -c jsdoc.conf.json"
   },
   "jest-runner-eslint": {
